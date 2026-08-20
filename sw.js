@@ -1,5 +1,5 @@
 // Service Worker for Tahi Kalahi PWA - Pre-cache all images
-const CACHE_NAME = 'tahi-kalahi-cache-v5';
+const CACHE_NAME = 'tahi-kalahi-cache-v6';
 
 // All files to pre-cache
 const urlsToCache = [
@@ -147,7 +147,7 @@ const urlsToCache = [
     'assets/images/Catch_dmg/catch_split13.webp',
     'assets/images/Catch_dmg/catch_split14.webp',
     'assets/images/Catch_dmg/catch_split15.webp'
-    
+
 ];
 
 // Install Event: Pre-cache all files
