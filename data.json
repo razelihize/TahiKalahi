@@ -125,7 +125,7 @@
       "id": "loose-seams",
       "name": "Loose Seams",
       "recommendedStitchId": "backstitch",
-      "galleryImage": "assets/images/BackS/back_pattern.webp"
+      "galleryImage": "assets/images/BackS/"
     },
     {
       "id": "torn-edges",
@@ -151,7 +151,7 @@
       "id": "tiny-holes",
       "name": "Tiny Holes",
       "recommendedStitchId": "ladder",
-      "galleryImage": "assets/images/LadderS/ladder_pattern.webp"
+      "galleryImage": "assets/images/LadderS/"
     },
     {
       "id": "split-fabric",
