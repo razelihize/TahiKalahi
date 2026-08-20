@@ -1,0 +1,25 @@
+{
+  "name": "Tahi Kalahi: Hand-Stitching Guide",
+  "short_name": "TahiKalahi",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#A8B5A0",
+  "orientation": "any",
+  "description": "A 2D Infographic PWA for Learning Hand-Stitching Repair Techniques",
+  "icons": [
+    {
+      "src": "assets/icons/192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education", "lifestyle"],
+  "lang": "en-US"
+}

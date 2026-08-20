@@ -1,0 +1,200 @@
+{
+  "stitches": [
+    {
+      "id": "running",
+      "name": "Running Stitch",
+      "type": "Basic",
+      "difficulty": "Easy",
+      "description": "The most basic stitch used for seams, gathering fabric, and attaching patches.",
+      "galleryImage": "assets/images/RunningS/running_pattern.webp",
+      "steps": [
+        { "title": "Step 1", "text": "Hold the needle in one hand and the thread in the other. Carefully insert the end of the thread through the eye of the needle.", "image": "assets/images/RunningS/running1.webp" },
+        { "title": "Step 2", "text": "Pull the thread through the needle's eye. Cut the thread to your desired length.", "image": "assets/images/RunningS/running2.webp" },
+        { "title": "Step 3", "text": "Position your fabric. From the back of the textile, hold the needle ready to begin your first stitch.", "image": "assets/images/RunningS/running3.webp" },
+        { "title": "Step 4", "text": "Push the needle through the fabric from the back side. The needle should emerge on the opposite side.", "image": "assets/images/RunningS/running4.webp" },
+        { "title": "Step 5", "text": "Pull the needle and thread through to the front of the textile to complete your first stitch entry.", "image": "assets/images/RunningS/running5.webp" },
+        { "title": "Step 6", "text": "On the front, you'll see the first stitch. The needle has emerged, completing the first running stitch.", "image": "assets/images/RunningS/running6.webp" },
+        { "title": "Step 7", "text": "Insert the needle back down a short distance from where the thread emerged to create the second stitch.", "image": "assets/images/RunningS/running7.webp" },
+        { "title": "Step 8", "text": "Push the needle through and bring it up again. You now have two complete stitches visible on the front.", "image": "assets/images/RunningS/running8.webp" },
+        { "title": "Step 9", "text": "Continue the pattern. You can now see two complete running stitches forming a dashed line.", "image": "assets/images/RunningS/running9.webp" },
+        { "title": "Step 10", "text": "Repeat the process: the needle goes down, creating a stitch, and emerges to continue the pattern.", "image": "assets/images/RunningS/running10.webp" },
+        { "title": "Step 11", "text": "Continue stitching along your line. The front shows the characteristic dashed pattern of evenly spaced stitches.", "image": "assets/images/RunningS/running11.webp" },
+        { "title": "Step 12", "text": "On the back, the stitch appears as longer thread paths. Tie a secure knot on the back to finish.", "image": "assets/images/RunningS/running12.webp" }
+      ]
+    },
+    {
+      "id": "backstitch",
+      "name": "Backstitch",
+      "type": "Basic",
+      "difficulty": "Medium",
+      "description": "A strong, durable stitch ideal for repairing loose seams.",
+      "galleryImage": "assets/images/BackS/back_pattern.webp",
+      "steps": [
+        { "title": "Step 1", "text": "Hold the needle in one hand and the thread in the other. Insert the end of the thread through the eye of the needle.", "image": "assets/images/BackS/back1.webp" },
+        { "title": "Step 2", "text": "Pull the thread through. Cut the thread to your desired length.", "image": "assets/images/BackS/back2.webp" },
+        { "title": "Step 3", "text": "Position your fabric. From the back of the textile, hold the needle ready to begin your first stitch.", "image": "assets/images/BackS/back3.webp" },
+        { "title": "Step 4", "text": "Push the needle through the fabric from the back side. The needle should emerge on the opposite side.", "image": "assets/images/BackS/back4.webp" },
+        { "title": "Step 5", "text": "Pull the needle and thread through to the front of the textile to complete your first stitch entry.", "image": "assets/images/BackS/back5.webp" },
+        { "title": "Step 6", "text": "The needle emerges at point '1', completing the first stitch of the backstitch pattern.", "image": "assets/images/BackS/back6.webp" },
+        { "title": "Step 7", "text": "Insert the needle down at point '2', which is one stitch length behind point '1' where the thread emerged.", "image": "assets/images/BackS/back7.webp" },
+        { "title": "Step 8", "text": "Push the needle through from point '2' and bring it up at point '3', which is two stitch lengths ahead of point '1'.", "image": "assets/images/BackS/back8.webp" },
+        { "title": "Step 9", "text": "Pull the thread through to complete the second stitch. You now have two connected stitches forming a solid line.", "image": "assets/images/BackS/back9.webp" },
+        { "title": "Step 10", "text": "Continue the pattern: insert the needle down at point '2' (end of previous stitch) and bring it up at point '3' (two lengths ahead).", "image": "assets/images/BackS/back10.webp" },
+        { "title": "Step 11", "text": "Insert the needle down at point '4', directly at the end of the previous stitch to continue the solid line.", "image": "assets/images/BackS/back11.webp" },
+        { "title": "Step 12", "text": "Bring the needle up at point '5', ahead of the previous stitches, to form the next part of the continuous line.", "image": "assets/images/BackS/back12.webp" },
+        { "title": "Step 13", "text": "Pull the thread through. You can now see the stitches connecting to form a solid, unbroken line on the surface.", "image": "assets/images/BackS/back13.webp" },
+        { "title": "Step 14", "text": "Repeat the motion: insert the needle down at point '5' and bring it up at point '3' to extend the row of stitches.", "image": "assets/images/BackS/back14.webp" },
+        { "title": "Step 15", "text": "Continue until the repair is complete. The finished backstitch creates a strong, solid line of evenly spaced stitches perfect for reinforcing seams.", "image": "assets/images/BackS/back15.webp" },
+        { "title": "Step 16", "text": "On the back, the thread forms a continuous, overlapping line. Tie off the thread securely here to finish the repair.", "image": "assets/images/BackS/back16.webp" }
+      ]
+    },
+    {
+      "id": "whip",
+      "name": "Whip Stitch",
+      "type": "Basic",
+      "difficulty": "Easy",
+      "description": "Used to join two edges of fabric, finish raw edges, or repair torn edges.",
+      "galleryImage": "assets/images/WhipS/whip_pattern.webp",
+      "steps": [
+        { "title": "Step 1", "text": "Text here", "image": "assets/images/WhipS/whip1.webp" },
+        { "title": "Step 2", "text": "Text here", "image": "assets/images/WhipS/whip2.webp" },
+        { "title": "Step 3", "text": "Text here", "image": "assets/images/WhipS/whip3.webp" },
+        { "title": "Step 4", "text": "Text here", "image": "assets/images/WhipS/whip4.webp" },
+        { "title": "Step 5", "text": "Text here", "image": "assets/images/WhipS/whip5.webp" },
+        { "title": "Step 6", "text": "Text here", "image": "assets/images/WhipS/whip6.webp" },
+        { "title": "Step 7", "text": "Text here", "image": "assets/images/WhipS/whip7.webp" },
+        { "title": "Step 8", "text": "Text here", "image": "assets/images/WhipS/whip8.webp" },
+        { "title": "Step 9", "text": "Text here", "image": "assets/images/WhipS/whip9.webp" },
+        { "title": "Step 10", "text": "Text here", "image": "assets/images/WhipS/whip10.webp" },
+        { "title": "Step 11", "text": "Text here", "image": "assets/images/WhipS/whip11.webp" }
+      ]
+    },
+    {
+      "id": "catch",
+      "name": "Catch Stitch",
+      "type": "Basic",
+      "difficulty": "Medium",
+      "description": "A cross-stitch used for hemming and holding split fabric edges flat without puckering.",
+      "galleryImage": "assets/images/CatchS/catch_pattern.webp",
+      "steps": [
+        { "title": "Step 1", "text": "Text here", "image": "assets/images/CatchS/catch1.webp" },
+        { "title": "Step 2", "text": "Text here", "image": "assets/images/CatchS/catch2.webp" },
+        { "title": "Step 3", "text": "Text here", "image": "assets/images/CatchS/catch3.webp" },
+        { "title": "Step 4", "text": "Text here", "image": "assets/images/CatchS/catch4.webp" },
+        { "title": "Step 5", "text": "Text here", "image": "assets/images/CatchS/catch5.webp" },
+        { "title": "Step 6", "text": "Text here", "image": "assets/images/CatchS/catch6.webp" },
+        { "title": "Step 7", "text": "Text here", "image": "assets/images/CatchS/catch7.webp" },
+        { "title": "Step 8", "text": "Text here", "image": "assets/images/CatchS/catch8.webp" },
+        { "title": "Step 9", "text": "Text here", "image": "assets/images/CatchS/catch9.webp" },
+        { "title": "Step 10", "text": "Text here", "image": "assets/images/CatchS/catch10.webp" },
+        { "title": "Step 11", "text": "Text here", "image": "assets/images/CatchS/catch11.webp" },
+        { "title": "Step 12", "text": "Text here", "image": "assets/images/CatchS/catch12.webp" },
+        { "title": "Step 13", "text": "Text here", "image": "assets/images/CatchS/catch13.webp" },
+        { "title": "Step 14", "text": "Text here", "image": "assets/images/CatchS/catch14.webp" },
+        { "title": "Step 15", "text": "Text here", "image": "assets/images/CatchS/catch15.webp" }
+      ]
+    },
+    {
+      "id": "ladder",
+      "name": "Ladder Stitch",
+      "type": "Basic",
+      "difficulty": "Hard",
+      "description": "An invisible stitch perfect for closing tiny holes seamlessly.",
+      "galleryImage": "assets/images/LadderS/ladder_pattern.webp",
+      "steps": [
+        { "title": "Step 1", "text": "Hold the needle in one hand and the thread in the other. Insert the end of the thread through the eye of the needle.", "image": "assets/images/LadderS/ladder1.webp" },
+        { "title": "Step 2", "text": "Pull the thread through. Cut the thread to your desired length.", "image": "assets/images/LadderS/ladder2.webp" },
+        { "title": "Step 3", "text": "Position your fabric. From the back of the textile, hold the needle ready to begin your first stitch.", "image": "assets/images/LadderS/ladder3.webp" },
+        { "title": "Step 4", "text": "Push the needle through the fabric from the back side. The needle should emerge on the opposite side.", "image": "assets/images/LadderS/ladder4.webp" },
+        { "title": "Step 5", "text": "Pull the needle and thread through to the front of the textile to complete your first stitch entry.", "image": "assets/images/LadderS/ladder5.webp" },
+        { "title": "Step 6", "text": "On the front, you'll see the first stitch. The number '1' points to the loop of thread that is now visible.", "image": "assets/images/LadderS/ladder6.webp" },
+        { "title": "Step 7", "text": "Insert the needle downwards at point '2', directly across from where the thread emerged at point '1'.", "image": "assets/images/LadderS/ladder7.webp" },
+        { "title": "Step 8", "text": "Push the needle through and bring it up at point '3'. You are creating a horizontal stitch across the gap.", "image": "assets/images/LadderS/ladder8.webp" },
+        { "title": "Step 9", "text": "Continue the pattern. You can now see two parallel horizontal stitches across the gap.", "image": "assets/images/LadderS/ladder9.webp" },
+        { "title": "Step 10", "text": "Repeat the process: the needle goes down at point '2', with the previous stitch at '1' and the next emergence point at '3'.", "image": "assets/images/LadderS/ladder10.webp" },
+        { "title": "Step 11", "text": "Continue alternating stitches. Insert the needle down at point '4' and bring it up at point '3' to add another stitch.", "image": "assets/images/LadderS/ladder11.webp" },
+        { "title": "Step 12", "text": "Hold the fabric edges together. You can now see the parallel stitches spanning across the gap.", "image": "assets/images/LadderS/ladder12.webp" },
+        { "title": "Step 13", "text": "Continue building the stitch. The needle emerges at point '3', with previous stitches marked at '4' and '5'.", "image": "assets/images/LadderS/ladder13.webp" },
+        { "title": "Step 14", "text": "A series of evenly spaced, parallel stitches are now visible across the gap, with the needle at the end of the line.", "image": "assets/images/LadderS/ladder14.webp" },
+        { "title": "Step 15", "text": "On the back, the thread paths are longer and curved, connecting the points where the needle went in and out. Tie a secure knot to finish.", "image": "assets/images/LadderS/ladder15.webp" }
+      ]
+    }
+  ],
+  "damages": [
+    {
+      "id": "loose-seams",
+      "name": "Loose Seams",
+      "recommendedStitchId": "backstitch",
+      "galleryImage": "assets/images/BackS/"
+    },
+    {
+      "id": "torn-edges",
+      "name": "Torn Edges",
+      "recommendedStitchId": "whip",
+      "galleryImage": "assets/images/Whip_dmg/whip_torn_edges.webp",
+      "steps": [
+        { "title": "Step 1", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges1.webp" },
+        { "title": "Step 2", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges2.webp" },
+        { "title": "Step 3", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges3.webp" },
+        { "title": "Step 4", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges4.webp" },
+        { "title": "Step 5", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges5.webp" },
+        { "title": "Step 6", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges6.webp" },
+        { "title": "Step 7", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges7.webp" },
+        { "title": "Step 8", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges8.webp" },
+        { "title": "Step 9", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges9.webp" },
+        { "title": "Step 10", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges10.webp" },
+        { "title": "Step 11", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges11.webp" },
+        { "title": "Step 12", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges12.webp" }
+      ]
+    },
+    {
+      "id": "tiny-holes",
+      "name": "Tiny Holes",
+      "recommendedStitchId": "ladder",
+      "galleryImage": "assets/images/LadderS/"
+    },
+    {
+      "id": "split-fabric",
+      "name": "Split Fabric",
+      "recommendedStitchId": "catch",
+      "galleryImage": "assets/images/Catch_dmg/catch_split.webp",
+      "steps": [
+        { "title": "Step 1", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split1.webp" },
+        { "title": "Step 2", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split2.webp" },
+        { "title": "Step 3", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split3.webp" },
+        { "title": "Step 4", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split4.webp" },
+        { "title": "Step 5", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split5.webp" },
+        { "title": "Step 6", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split6.webp" },
+        { "title": "Step 7", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split7.webp" },
+        { "title": "Step 8", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split8.webp" },
+        { "title": "Step 9", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split9.webp" },
+        { "title": "Step 10", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split10.webp" },
+        { "title": "Step 11", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split11.webp" },
+        { "title": "Step 12", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split12.webp" },
+        { "title": "Step 13", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split13.webp" },
+        { "title": "Step 14", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split14.webp" },
+        { "title": "Step 15", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split15.webp" }
+      ]
+    },
+    {
+      "id": "patches",
+      "name": "Patches",
+      "recommendedStitchId": "running",
+      "galleryImage": "assets/images/Running_dmg/running_patches.webp",
+      "steps": [
+        { "title": "Step 1", "text": "Text here", "image": "assets/images/Running_dmg/running_patches1.webp" },
+        { "title": "Step 2", "text": "Text here", "image": "assets/images/Running_dmg/running_patches2.webp" },
+        { "title": "Step 3", "text": "Text here", "image": "assets/images/Running_dmg/running_patches3.webp" },
+        { "title": "Step 4", "text": "Text here", "image": "assets/images/Running_dmg/running_patches4.webp" },
+        { "title": "Step 5", "text": "Text here", "image": "assets/images/Running_dmg/running_patches5.webp" },
+        { "title": "Step 6", "text": "Text here", "image": "assets/images/Running_dmg/running_patches6.webp" },
+        { "title": "Step 7", "text": "Text here", "image": "assets/images/Running_dmg/running_patches7.webp" },
+        { "title": "Step 8", "text": "Text here", "image": "assets/images/Running_dmg/running_patches8.webp" },
+        { "title": "Step 9", "text": "Text here", "image": "assets/images/Running_dmg/running_patches9.webp" },
+        { "title": "Step 10", "text": "Text here", "image": "assets/images/Running_dmg/running_patches10.webp" },
+        { "title": "Step 11", "text": "Text here", "image": "assets/images/Running_dmg/running_patches11.webp" },
+        { "title": "Step 12", "text": "Text here", "image": "assets/images/Running_dmg/running_patches12.webp" }
+      ]
+    }
+  ]
+}
