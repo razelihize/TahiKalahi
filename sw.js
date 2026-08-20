@@ -1,21 +1,19 @@
 // Service Worker for Tahi Kalahi PWA
-// Version: 3.0 (Updated to include data.json)
+const CACHE_NAME = 'tahi-kalahi-cache-v4';
 
-const CACHE_NAME = 'tahi-kalahi-cache-v3'; // IMPORTANT: Increment version number to force update
-
-// List of all files that must be available offline
+// Files to cache immediately on install
 const urlsToCache = [
     './',
     './index.html',
     './style.css',
     './app.js',
-    './data.json', // CRITICAL: This ensures your stitches and damages load offline
+    './data.json',
     './manifest.json',
     './assets/icons/192.png',
     './assets/icons/512.png'
 ];
 
-// Install Event: Download and cache all essential files
+// Install Event: Cache essential files
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
@@ -27,7 +25,6 @@ self.addEventListener('install', (event) => {
                 console.error('[SW] Failed to cache essential files:', error);
             })
     );
-    // Force the waiting service worker to become the active service worker
     self.skipWaiting();
 });
 
@@ -46,38 +43,47 @@ self.addEventListener('activate', (event) => {
             );
         })
     );
-    // Ensure the service worker takes control of all clients as soon as it's activated
     self.clients.claim();
 });
 
-// Fetch Event: Serve cached files when offline (Cache First Strategy)
+// Fetch Event: Cache images and other assets dynamically
 self.addEventListener('fetch', (event) => {
+    // Skip non-GET requests
+    if (event.request.method !== 'GET') {
+        return;
+    }
+
     event.respondWith(
         caches.match(event.request)
             .then((response) => {
-                // Cache hit - return the cached version
+                // Return cached version if available
                 if (response) {
                     return response;
                 }
-                // Cache miss - fetch from network
-                return fetch(event.request).then(
-                    (response) => {
-                        // Check if we received a valid response
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
 
-                        // Clone the response to cache it for next time
-                        const responseToCache = response.clone();
+                // Clone the request
+                const fetchRequest = event.request.clone();
 
-                        caches.open(CACHE_NAME)
-                            .then((cache) => {
-                                cache.put(event.request, responseToCache);
-                            });
-
+                return fetch(fetchRequest).then((response) => {
+                    // Check if we received a valid response
+                    if (!response || response.status !== 200 || response.type !== 'basic' && response.type !== 'cors') {
                         return response;
                     }
-                );
+
+                    // Clone the response
+                    const responseToCache = response.clone();
+
+                    // Cache the response
+                    caches.open(CACHE_NAME)
+                        .then((cache) => {
+                            cache.put(event.request, responseToCache);
+                        });
+
+                    return response;
+                }).catch(() => {
+                    // If fetch fails, try to return a cached version or show offline page
+                    return caches.match('./index.html');
+                });
             })
     );
 });
