@@ -56,17 +56,17 @@
       "description": "Used to join two edges of fabric, finish raw edges, or repair torn edges.",
       "galleryImage": "assets/images/WhipS/whip_pattern.webp",
       "steps": [
-        { "title": "Step 1", "text": "Text here", "image": "assets/images/WhipS/whip1.webp" },
-        { "title": "Step 2", "text": "Text here", "image": "assets/images/WhipS/whip2.webp" },
-        { "title": "Step 3", "text": "Text here", "image": "assets/images/WhipS/whip3.webp" },
-        { "title": "Step 4", "text": "Text here", "image": "assets/images/WhipS/whip4.webp" },
-        { "title": "Step 5", "text": "Text here", "image": "assets/images/WhipS/whip5.webp" },
-        { "title": "Step 6", "text": "Text here", "image": "assets/images/WhipS/whip6.webp" },
-        { "title": "Step 7", "text": "Text here", "image": "assets/images/WhipS/whip7.webp" },
-        { "title": "Step 8", "text": "Text here", "image": "assets/images/WhipS/whip8.webp" },
-        { "title": "Step 9", "text": "Text here", "image": "assets/images/WhipS/whip9.webp" },
-        { "title": "Step 10", "text": "Text here", "image": "assets/images/WhipS/whip10.webp" },
-        { "title": "Step 11", "text": "Text here", "image": "assets/images/WhipS/whip11.webp" }
+        { "title": "Step 1", "text": "Hold the needle in one hand and the thread in the other. Carefully insert the end of the thread through the eye of the needle.", "image": "assets/images/WhipS/whip1.webp" },
+        { "title": "Step 2", "text": "Pull the thread through the needle's eye. Cut the thread to your desired length, depending on the length of the repair.", "image": "assets/images/WhipS/whip2.webp" },
+        { "title": "Step 3", "text": "Position your fabric. From the back of the textile, hold the needle ready to begin your first stitch through the fabric edges.", "image": "assets/images/WhipS/whip3.webp" },
+        { "title": "Step 4", "text": "Push the needle through the fabric from the back side. The needle should emerge on the opposite side, pulling the thread through.", "image": "assets/images/WhipS/whip4.webp" },
+        { "title": "Step 5", "text": "Pull the needle and thread through to the back of the textile. Bring the needle around the edge of the fabric and insert it from back to front, creating the first whip stitch. The needle emerges at point 1 on the front side.", "image": "assets/images/WhipS/whip5.webp" },
+        { "title": "Step 6", "text": "On the front, you'll see the first stitch. Position the needle at point 1 where the thread emerged, ready to insert it through both fabric layers.", "image": "assets/images/WhipS/whip6.webp" },
+        { "title": "Step 7", "text": "Insert the needle at point 2, a short distance from point 1, pushing it through both fabric layers from front to back.", "image": "assets/images/WhipS/whip7.webp" },
+        { "title": "Step 8", "text": "Push the needle through and guide it around the edge of the fabric from the back, bringing it back to the front to maintain the wrapping motion.", "image": "assets/images/WhipS/whip8.webp" },
+        { "title": "Step 9", "text": "Pull the needle through to the front, emerging at point 2. The thread wraps around the fabric edge, creating the characteristic diagonal stitch.", "image": "assets/images/WhipS/whip9.webp" },
+        { "title": "Step 10", "text": "Continue this pattern along the entire edge. The front shows evenly spaced diagonal stitches wrapping around the fabric edge.", "image": "assets/images/WhipS/whip10.webp" },
+        { "title": "Step 11", "text": "On the back, the thread forms a continuous line along the edge. Tie a secure knot to finish and trim any excess thread.", "image": "assets/images/WhipS/whip11.webp" }
       ]
     },
     {
@@ -77,21 +77,21 @@
       "description": "A cross-stitch used for hemming and holding split fabric edges flat without puckering.",
       "galleryImage": "assets/images/CatchS/catch_pattern.webp",
       "steps": [
-        { "title": "Step 1", "text": "Text here", "image": "assets/images/CatchS/catch1.webp" },
-        { "title": "Step 2", "text": "Text here", "image": "assets/images/CatchS/catch2.webp" },
-        { "title": "Step 3", "text": "Text here", "image": "assets/images/CatchS/catch3.webp" },
-        { "title": "Step 4", "text": "Text here", "image": "assets/images/CatchS/catch4.webp" },
-        { "title": "Step 5", "text": "Text here", "image": "assets/images/CatchS/catch5.webp" },
-        { "title": "Step 6", "text": "Text here", "image": "assets/images/CatchS/catch6.webp" },
-        { "title": "Step 7", "text": "Text here", "image": "assets/images/CatchS/catch7.webp" },
-        { "title": "Step 8", "text": "Text here", "image": "assets/images/CatchS/catch8.webp" },
-        { "title": "Step 9", "text": "Text here", "image": "assets/images/CatchS/catch9.webp" },
-        { "title": "Step 10", "text": "Text here", "image": "assets/images/CatchS/catch10.webp" },
-        { "title": "Step 11", "text": "Text here", "image": "assets/images/CatchS/catch11.webp" },
-        { "title": "Step 12", "text": "Text here", "image": "assets/images/CatchS/catch12.webp" },
-        { "title": "Step 13", "text": "Text here", "image": "assets/images/CatchS/catch13.webp" },
-        { "title": "Step 14", "text": "Text here", "image": "assets/images/CatchS/catch14.webp" },
-        { "title": "Step 15", "text": "Text here", "image": "assets/images/CatchS/catch15.webp" }
+        { "title": "Step 1", "text": "Hold the needle in one hand and the thread in the other. Carefully insert the end of the thread through the eye of the needle.", "image": "assets/images/CatchS/catch1.webp" },
+        { "title": "Step 2", "text": "Pull the thread through the needle's eye. Cut the thread to your desired length, depending on the length of the repair.", "image": "assets/images/CatchS/catch2.webp" },
+        { "title": "Step 3", "text": "Position your fabric. From the back of the textile, hold the needle ready to begin your first stitch.", "image": "assets/images/CatchS/catch3.webp" },
+        { "title": "Step 4", "text": "Push the needle through the fabric from the back side. The needle should emerge on the opposite side, pulling the thread through.", "image": "assets/images/CatchS/catch4.webp" },
+        { "title": "Step 5", "text": "Pull the needle and thread through to the front of the textile. The needle emerges at point 1, completing your first stitch entry.", "image": "assets/images/CatchS/catch5.webp" },
+        { "title": "Step 6", "text": "On the front, you'll see the first stitch at point 1. Position the needle at point 2 on the opposite fabric edge, ready to make the next stitch.", "image": "assets/images/CatchS/catch6.webp" },
+        { "title": "Step 7", "text": "Insert the needle at point 2, pushing it through the fabric from front to back. The needle should pass through point 3 on the opposite side.", "image": "assets/images/CatchS/catch7.webp" },
+        { "title": "Step 8", "text": "Pull the needle and thread completely through to the back of the textile, creating a small horizontal stitch on the fabric edge.", "image": "assets/images/CatchS/catch8.webp" },
+        { "title": "Step 9", "text": "The needle emerges at point 3 on the front. The thread now crosses diagonally from point 1 to point 3, forming the characteristic catch stitch pattern.", "image": "assets/images/CatchS/catch9.webp" },
+        { "title": "Step 10", "text": "Bring the needle back to the original side, positioning it at point 4. Insert the needle, continuing the alternating pattern.", "image": "assets/images/CatchS/catch10.webp" },
+        { "title": "Step 11", "text": "Insert the needle at point 5, pushing it through the fabric from front to back. The needle passes through point 4 on the opposite side, continuing the alternating pattern.", "image": "assets/images/CatchS/catch11.webp" },
+        { "title": "Step 12", "text": "Pull the needle and thread completely through to the back of the textile, creating another small horizontal stitch on the fabric edge.", "image": "assets/images/CatchS/catch12.webp" },
+        { "title": "Step 13", "text": "The needle emerges at point 5 on the front. The thread crosses diagonally from point 4 to point 5, forming another X-shaped stitch.", "image": "assets/images/CatchS/catch13.webp" },
+        { "title": "Step 14", "text": "Continue this pattern along the entire edge. The front shows a series of evenly spaced, crossing stitches that hold the fabric edges flat without puckering.", "image": "assets/images/CatchS/catch14.webp" },
+        { "title": "Step 15", "text": "On the back, the thread forms small, separate stitches. Tie a secure knot to finish and trim any excess thread.", "image": "assets/images/CatchS/catch15.webp" }
       ]
     },
     {
@@ -125,7 +125,7 @@
       "id": "loose-seams",
       "name": "Loose Seams",
       "recommendedStitchId": "backstitch",
-      "galleryImage": "assets/images/BackS/"
+      "galleryImage": "assets/images/BackS/back_pattern.webp"
     },
     {
       "id": "torn-edges",
@@ -133,25 +133,25 @@
       "recommendedStitchId": "whip",
       "galleryImage": "assets/images/Whip_dmg/whip_torn_edges.webp",
       "steps": [
-        { "title": "Step 1", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges1.webp" },
-        { "title": "Step 2", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges2.webp" },
-        { "title": "Step 3", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges3.webp" },
-        { "title": "Step 4", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges4.webp" },
-        { "title": "Step 5", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges5.webp" },
-        { "title": "Step 6", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges6.webp" },
-        { "title": "Step 7", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges7.webp" },
-        { "title": "Step 8", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges8.webp" },
-        { "title": "Step 9", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges9.webp" },
-        { "title": "Step 10", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges10.webp" },
-        { "title": "Step 11", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges11.webp" },
-        { "title": "Step 12", "text": "Text here", "image": "assets/images/Whip_dmg/whip_torn_edges12.webp" }
+        { "title": "Step 1", "text": "Hold the needle in one hand and the thread in the other. Carefully insert the end of the thread through the eye of the needle.", "image": "assets/images/Whip_dmg/whip_torn_edges1.webp" },
+        { "title": "Step 2", "text": "Pull the thread through the needle's eye. Cut the thread to your desired length, depending on the length of the torn edge.", "image": "assets/images/Whip_dmg/whip_torn_edges2.webp" },
+        { "title": "Step 3", "text": "Fold the torn edges of the fabric inward to create a clean, finished edge. This will prevent further fraying.", "image": "assets/images/Whip_dmg/whip_torn_edges3.webp" },
+        { "title": "Step 4", "text": "Position your fabric. From the back of the textile, hold the needle ready to begin your first stitch along the folded edge.", "image": "assets/images/Whip_dmg/whip_torn_edges4.webp" },
+        { "title": "Step 5", "text": "Push the needle through the folded fabric from the back side. The needle should emerge on the front side, pulling the thread through.", "image": "assets/images/Whip_dmg/whip_torn_edges5.webp" },
+        { "title": "Step 6", "text": "Pull the needle and thread through to the front of the textile. The needle emerges at point 1, completing the first whip stitch along the folded edge.", "image": "assets/images/Whip_dmg/whip_torn_edges6.webp" },
+        { "title": "Step 7", "text": "On the front, you'll see the first stitch at point 1. Position the needle at the edge of the folded fabric, ready to make the next stitch.", "image": "assets/images/Whip_dmg/whip_torn_edges7.webp" },
+        { "title": "Step 8", "text": "Insert the needle at point 2, a short distance from point 1, pushing it through the folded fabric from front to back.", "image": "assets/images/Whip_dmg/whip_torn_edges8.webp" },
+        { "title": "Step 9", "text": "Push the needle through and guide it around the edge of the fabric from the back, bringing it back to the front to maintain the wrapping motion.", "image": "assets/images/Whip_dmg/whip_torn_edges9.webp" },
+        { "title": "Step 10", "text": "Pull the needle through to the front, emerging at point 2. The thread wraps around the folded edge, creating the characteristic diagonal whip stitch from point 1 to point 2.", "image": "assets/images/Whip_dmg/whip_torn_edges10.webp" },
+        { "title": "Step 11", "text": "Continue this pattern along the entire torn edge. The front shows a series of evenly spaced, diagonal stitches wrapping over the edge to secure the fold.", "image": "assets/images/Whip_dmg/whip_torn_edges11.webp" },
+        { "title": "Step 12", "text": "On the back, the thread forms a continuous line along the edge. Tie a secure knot to finish and trim any excess thread. The torn edge is now neatly repaired.", "image": "assets/images/Whip_dmg/whip_torn_edges12.webp" }
       ]
     },
     {
       "id": "tiny-holes",
       "name": "Tiny Holes",
       "recommendedStitchId": "ladder",
-      "galleryImage": "assets/images/LadderS/"
+      "galleryImage": "assets/images/LadderS/ladder_pattern.webp"
     },
     {
       "id": "split-fabric",
@@ -159,21 +159,21 @@
       "recommendedStitchId": "catch",
       "galleryImage": "assets/images/Catch_dmg/catch_split.webp",
       "steps": [
-        { "title": "Step 1", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split1.webp" },
-        { "title": "Step 2", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split2.webp" },
-        { "title": "Step 3", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split3.webp" },
-        { "title": "Step 4", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split4.webp" },
-        { "title": "Step 5", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split5.webp" },
-        { "title": "Step 6", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split6.webp" },
-        { "title": "Step 7", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split7.webp" },
-        { "title": "Step 8", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split8.webp" },
-        { "title": "Step 9", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split9.webp" },
-        { "title": "Step 10", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split10.webp" },
-        { "title": "Step 11", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split11.webp" },
-        { "title": "Step 12", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split12.webp" },
-        { "title": "Step 13", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split13.webp" },
-        { "title": "Step 14", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split14.webp" },
-        { "title": "Step 15", "text": "Text here", "image": "assets/images/Catch_dmg/catch_split15.webp" }
+        { "title": "Step 1", "text": "Hold the needle in one hand and the thread in the other. Carefully insert the end of the thread through the eye of the needle.", "image": "assets/images/Catch_dmg/catch_split1.webp" },
+        { "title": "Step 2", "text": "Pull the thread through the needle's eye. Cut the thread to your desired length, depending on the length of the split.", "image": "assets/images/Catch_dmg/catch_split2.webp" },
+        { "title": "Step 3", "text": "Position your fabric. From the back of the textile, hold the needle ready to begin your first stitch along the split edge.", "image": "assets/images/Catch_dmg/catch_split3.webp" },
+        { "title": "Step 4", "text": "Push the needle through the fabric from the back side. The needle should emerge on the opposite side, pulling the thread through.", "image": "assets/images/Catch_dmg/catch_split4.webp" },
+        { "title": "Step 5", "text": "Pull the needle and thread through to the front of the textile. The needle emerges at point 1, completing your first stitch entry.", "image": "assets/images/Catch_dmg/catch_split5.webp" },
+        { "title": "Step 6", "text": "On the front, you'll see the first stitch at point 1. Position the needle at point 2 on the opposite side of the split, ready to make the next stitch.", "image": "assets/images/Catch_dmg/catch_split6.webp" },
+        { "title": "Step 7", "text": "Insert the needle at point 2, pushing it through the fabric from front to back. The needle should pass through point 3 on the opposite side of the split.", "image": "assets/images/Catch_dmg/catch_split7.webp" },
+        { "title": "Step 8", "text": "Pull the needle and thread completely through to the back of the textile, creating a small horizontal stitch on the fabric edge.", "image": "assets/images/Catch_dmg/catch_split8.webp" },
+        { "title": "Step 9", "text": "The needle emerges at point 3 on the front. The thread now crosses diagonally from point 1 to point 3, forming the characteristic catch stitch pattern.", "image": "assets/images/Catch_dmg/catch_split9.webp" },
+        { "title": "Step 10", "text": "Bring the needle back to the original side, positioning it at point 4. Insert the needle, continuing the alternating pattern across the split.", "image": "assets/images/Catch_dmg/catch_split10.webp" },
+        { "title": "Step 11", "text": "Insert the needle at point 5, pushing it through the fabric from front to back. The needle passes through point 4 on the opposite side, continuing the alternating pattern.", "image": "assets/images/Catch_dmg/catch_split11.webp" },
+        { "title": "Step 12", "text": "Pull the needle and thread completely through to the back of the textile, creating another small horizontal stitch on the fabric edge.", "image": "assets/images/Catch_dmg/catch_split12.webp" },
+        { "title": "Step 13", "text": "The needle emerges at point 5 on the front. The thread crosses diagonally from point 4 to point 5, forming another X-shaped stitch that holds the split together.", "image": "assets/images/Catch_dmg/catch_split13.webp" },
+        { "title": "Step 14", "text": "Continue this pattern along the entire split. The front shows a series of evenly spaced, crossing stitches that hold the fabric edges flat without puckering.", "image": "assets/images/Catch_dmg/catch_split14.webp" },
+        { "title": "Step 15", "text": "On the back, the thread forms small, separate stitches. Tie a secure knot to finish and trim any excess thread. The split fabric is now securely repaired.", "image": "assets/images/Catch_dmg/catch_split15.webp" }
       ]
     },
     {
@@ -182,18 +182,18 @@
       "recommendedStitchId": "running",
       "galleryImage": "assets/images/Running_dmg/running_patches.webp",
       "steps": [
-        { "title": "Step 1", "text": "Text here", "image": "assets/images/Running_dmg/running_patches1.webp" },
-        { "title": "Step 2", "text": "Text here", "image": "assets/images/Running_dmg/running_patches2.webp" },
-        { "title": "Step 3", "text": "Text here", "image": "assets/images/Running_dmg/running_patches3.webp" },
-        { "title": "Step 4", "text": "Text here", "image": "assets/images/Running_dmg/running_patches4.webp" },
-        { "title": "Step 5", "text": "Text here", "image": "assets/images/Running_dmg/running_patches5.webp" },
-        { "title": "Step 6", "text": "Text here", "image": "assets/images/Running_dmg/running_patches6.webp" },
-        { "title": "Step 7", "text": "Text here", "image": "assets/images/Running_dmg/running_patches7.webp" },
-        { "title": "Step 8", "text": "Text here", "image": "assets/images/Running_dmg/running_patches8.webp" },
-        { "title": "Step 9", "text": "Text here", "image": "assets/images/Running_dmg/running_patches9.webp" },
-        { "title": "Step 10", "text": "Text here", "image": "assets/images/Running_dmg/running_patches10.webp" },
-        { "title": "Step 11", "text": "Text here", "image": "assets/images/Running_dmg/running_patches11.webp" },
-        { "title": "Step 12", "text": "Text here", "image": "assets/images/Running_dmg/running_patches12.webp" }
+        { "title": "Step 1", "text": "Hold the needle in one hand and the thread in the other. Carefully insert the end of the thread through the eye of the needle.", "image": "assets/images/Running_dmg/running_patches1.webp" },
+        { "title": "Step 2", "text": "Pull the thread through the needle's eye. Cut the thread to your desired length, depending on the size of the patch.", "image": "assets/images/Running_dmg/running_patches2.webp" },
+        { "title": "Step 3", "text": "Position your patch over the damaged area. From the back of the textile, hold the needle ready to begin your first stitch along the edge of the patch.", "image": "assets/images/Running_dmg/running_patches3.webp" },
+        { "title": "Step 4", "text": "Push the needle through the fabric and the patch from the back side. The needle should emerge on the front side, pulling the thread through.", "image": "assets/images/Running_dmg/running_patches4.webp" },
+        { "title": "Step 5", "text": "Pull the needle and thread through to the front of the textile. The needle emerges, completing your first stitch entry along the patch edge.", "image": "assets/images/Running_dmg/running_patches5.webp" },
+        { "title": "Step 6", "text": "On the front, you'll see the first stitch at point 1. Position the needle at point 2, a short distance from point 1, ready to insert it through both the patch and fabric layers.", "image": "assets/images/Running_dmg/running_patches6.webp" },
+        { "title": "Step 7", "text": "Insert the needle at point 2, pushing it down through both the patch and fabric layers from front to back.", "image": "assets/images/Running_dmg/running_patches7.webp" },
+        { "title": "Step 8", "text": "Push the needle through from point 2 and bring it up at point 3, a short distance ahead. You now have two complete stitches visible on the front.", "image": "assets/images/Running_dmg/running_patches8.webp" },
+        { "title": "Step 9", "text": "Pull the thread through completely. The front shows two complete running stitches forming a dashed line along the patch edge.", "image": "assets/images/Running_dmg/running_patches9.webp" },
+        { "title": "Step 10", "text": "Continue the pattern: the needle goes down at point 2, with the previous stitch at point 1 and the next emergence point at point 3, creating evenly spaced stitches.", "image": "assets/images/Running_dmg/running_patches10.webp" },
+        { "title": "Step 11", "text": "Continue stitching along the entire perimeter of the patch. The front shows the characteristic dashed pattern of evenly spaced stitches holding the patch securely in place.", "image": "assets/images/Running_dmg/running_patches11.webp" },
+        { "title": "Step 12", "text": "On the back, the thread forms longer paths connecting the stitches. Tie a secure knot to finish the repair and trim any excess thread.", "image": "assets/images/Running_dmg/running_patches12.webp" }
       ]
     }
   ]
