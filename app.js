@@ -1,6 +1,6 @@
 /**
  * Tahi Kalahi - Main Application Logic
- * PWA with Offline Capability - Optimized for Low-Bandwidth (56 kbps)
+ * PWA with Offline Capability
  */
 
 let appData = {};
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showView('home');
 });
 
-// Hero Slideshow Logic - Auto-change every 2 seconds
+// Hero Slideshow Logic
 function initHeroSlideshow() {
     const slides = document.querySelectorAll('.hero-slideshow .slide');
     if (slides.length === 0) return;
@@ -33,7 +33,7 @@ function initHeroSlideshow() {
     setInterval(showNextSlide, 2000);
 }
 
-// Page Navigation Function
+// Page Navigation
 function showView(viewId) {
     const views = document.querySelectorAll('.view');
     views.forEach(view => view.classList.remove('active-view'));
@@ -54,27 +54,73 @@ window.addEventListener('popstate', (event) => {
     showView('home');
 });
 
-// Load Data from JSON
+// Load Data from JSON - IMPROVED FOR OFFLINE
 async function fetchData() {
     try {
-        const response = await fetch('data.json?' + new Date().getTime()); // Added timestamp to prevent caching
+        // Add cache-busting parameter only when online
+        const cacheParam = navigator.onLine ? '?t=' + new Date().getTime() : '';
+        const response = await fetch('data.json' + cacheParam);
+        
+        if (!response.ok) {
+            throw new Error('Failed to load data');
+        }
+        
         appData = await response.json();
+        console.log('[App] Data loaded successfully:', appData);
         renderGallery();
-        renderDamage(); 
+        renderDamage();
         setTimeout(() => initializeSliders(), 100);
     } catch (error) {
-        console.error('Error loading data', error);
+        console.error('[App] Error loading data:', error);
+        // Try to load from cache
+        loadFromCache();
     }
 }
 
-// Render 5 Stitches
+// Load data from cache if fetch fails
+async function loadFromCache() {
+    try {
+        const cache = await caches.open('tahi-kalahi-cache-v5');
+        const response = await cache.match('./data.json');
+        
+        if (response) {
+            appData = await response.json();
+            console.log('[App] Data loaded from cache');
+            renderGallery();
+            renderDamage();
+            setTimeout(() => initializeSliders(), 100);
+        } else {
+            console.error('[App] No cached data found');
+            showError('Unable to load data. Please check your connection.');
+        }
+    } catch (error) {
+        console.error('[App] Cache load failed:', error);
+        showError('Unable to load data. Please refresh the page.');
+    }
+}
+
+// Show error message
+function showError(message) {
+    const galleryGrid = document.getElementById('gallery-grid');
+    const damageGrid = document.getElementById('damage-grid');
+    
+    if (galleryGrid) {
+        galleryGrid.innerHTML = '<p style="padding: 2rem; text-align: center; color: #666;">' + message + '</p>';
+    }
+    if (damageGrid) {
+        damageGrid.innerHTML = '<p style="padding: 2rem; text-align: center; color: #666;">' + message + '</p>';
+    }
+}
+
+// Render Gallery
 function renderGallery() {
     const container = document.getElementById('gallery-grid');
-    if (!container) return;
+    if (!container || !appData.stitches) return;
+    
     container.innerHTML = appData.stitches.map(s => `
         <div class="slider-card" onclick="viewGuide('${s.id}')">
             <div class="placeholder-box">
-                ${s.galleryImage ? `<img src="${s.galleryImage}" alt="${s.name} Illustration">` : `${s.name} Illustration`}
+                ${s.galleryImage ? `<img src="${s.galleryImage}" alt="${s.name} Illustration" loading="lazy">` : `${s.name} Illustration`}
             </div>
             <strong>${s.name}</strong>
             <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">${s.type}</p>
@@ -82,28 +128,29 @@ function renderGallery() {
     `).join('');
 }
 
-// Render 5 Damages
+// Render Damage Types
 function renderDamage() {
     const container = document.getElementById('damage-grid');
-    if (!container) return;
+    if (!container || !appData.damages) return;
+    
     container.innerHTML = appData.damages.map(d => `
         <div class="slider-card" onclick="getRecommendation('${d.id}')">
             <div class="placeholder-box">
-                ${d.galleryImage ? `<img src="${d.galleryImage}" alt="${d.name} Illustration">` : `${d.name} Illustration`}
+                ${d.galleryImage ? `<img src="${d.galleryImage}" alt="${d.name} Illustration" loading="lazy">` : `${d.name} Illustration`}
             </div>
             <strong>${d.name}</strong>
         </div>
     `).join('');
 }
 
-// Scroll Slider Function
+// Scroll Slider
 function scrollSlider(containerId, direction) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.scrollBy({ left: direction * 300, behavior: 'smooth' });
 }
 
-// Slider Functionality - Optimized for Smooth Scrolling
+// Initialize Sliders
 function initializeSliders() {
     const sliders = document.querySelectorAll('.horizontal-slider');
     sliders.forEach(slider => {
@@ -141,10 +188,15 @@ function initializeSliders() {
     });
 }
 
-// Get Stitch Recommendation
+// Get Recommendation
 function getRecommendation(damageId) {
     const damage = appData.damages.find(d => d.id === damageId);
     const stitch = appData.stitches.find(s => s.id === damage.recommendedStitchId);
+    
+    if (!damage || !stitch) {
+        alert('Unable to load recommendation. Please refresh the page.');
+        return;
+    }
     
     document.getElementById('modal-title').innerText = `Damage: ${damage.name}`;
     document.getElementById('modal-body').innerHTML = `
@@ -156,10 +208,15 @@ function getRecommendation(damageId) {
     document.getElementById('recommendation-modal').style.display = 'flex';
 }
 
-// View General Stitch Guide (From Gallery)
+// View Guide
 function viewGuide(stitchId) {
     closeModal();
     const stitch = appData.stitches.find(s => s.id === stitchId);
+    
+    if (!stitch) {
+        alert('Unable to load guide. Please refresh the page.');
+        return;
+    }
     
     document.getElementById('guide-title').innerText = stitch.name;
     document.getElementById('guide-steps').innerHTML = stitch.steps.map((step, index) => {
@@ -180,13 +237,17 @@ function viewGuide(stitchId) {
     document.getElementById('guide-modal').style.display = 'flex';
 }
 
-// View Damage-Specific Guide (FIXED: Now shows the correct number of steps)
+// View Damage Guide
 function viewDamageGuide(damageId) {
     closeModal();
     const damage = appData.damages.find(d => d.id === damageId);
     const stitch = appData.stitches.find(s => s.id === damage.recommendedStitchId);
     
-    // Use damage steps if they exist, otherwise fallback to generic stitch steps
+    if (!damage || !stitch) {
+        alert('Unable to load guide. Please refresh the page.');
+        return;
+    }
+    
     const stepsToUse = damage.steps || stitch.steps;
 
     document.getElementById('guide-title').innerText = `${stitch.name} for ${damage.name}`;
@@ -218,7 +279,7 @@ window.onclick = function(event) {
     if (event.target == document.getElementById('install-modal')) closeInstallModal();
 }
 
-// Cross-Browser Install Logic
+// Browser Detection
 function detectBrowser() {
     const userAgent = navigator.userAgent;
     if (/Edg/i.test(userAgent)) return 'edge';
@@ -289,19 +350,35 @@ function closeInstallModal() {
     document.getElementById('install-modal').style.display = 'none';
 }
 
+// Register Service Worker
 function registerSW() {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js')
-            .then((registration) => console.log('[PWA] Service Worker registered:', registration.scope))
-            .catch((error) => console.error('[PWA] Service Worker registration failed:', error));
+            .then((registration) => {
+                console.log('[PWA] Service Worker registered:', registration.scope);
+                
+                // Check for updates
+                registration.addEventListener('updatefound', () => {
+                    console.log('[PWA] Service Worker update found');
+                });
+            })
+            .catch((error) => {
+                console.error('[PWA] Service Worker registration failed:', error);
+            });
+            
+        // Handle service worker updates
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            console.log('[PWA] Service Worker controller changed - reloading content');
+            window.location.reload();
+        });
     }
 }
 
-// Expose functions to global window object
+// Expose functions
 window.showView = showView;
 window.scrollSlider = scrollSlider;
 window.viewGuide = viewGuide;
-window.viewDamageGuide = viewDamageGuide; // Exposed new function
+window.viewDamageGuide = viewDamageGuide;
 window.getRecommendation = getRecommendation;
 window.closeModal = closeModal;
 window.closeGuideModal = closeGuideModal;
