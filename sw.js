@@ -99,9 +99,55 @@ const urlsToCache = [
     'assets/images/LadderS/ladder15.webp',
     
     // Damage Images
+
+    //whip_torn_edges
     'assets/images/Whip_dmg/whip_torn_edges.webp',
+    'assets/images/Whip_dmg/whip_torn_edges1.webp',
+    'assets/images/Whip_dmg/whip_torn_edges2.webp',
+    'assets/images/Whip_dmg/whip_torn_edges3.webp',
+    'assets/images/Whip_dmg/whip_torn_edges4.webp',
+    'assets/images/Whip_dmg/whip_torn_edges5.webp',
+    'assets/images/Whip_dmg/whip_torn_edges6.webp',
+    'assets/images/Whip_dmg/whip_torn_edges7.webp',
+    'assets/images/Whip_dmg/whip_torn_edges8.webp',
+    'assets/images/Whip_dmg/whip_torn_edges9.webp',
+    'assets/images/Whip_dmg/whip_torn_edges10.webp',
+    'assets/images/Whip_dmg/whip_torn_edges11.webp',
+    'assets/images/Whip_dmg/whip_torn_edges12.webp',
+
+    //running_patches
     'assets/images/Running_dmg/running_patches.webp',
-    'assets/images/Catch_dmg/catch_split.webp'
+    'assets/images/Running_dmg/running_patches1.webp',
+    'assets/images/Running_dmg/running_patches2.webp',
+    'assets/images/Running_dmg/running_patches3.webp',
+    'assets/images/Running_dmg/running_patches4.webp',
+    'assets/images/Running_dmg/running_patches5.webp',
+    'assets/images/Running_dmg/running_patches6.webp',
+    'assets/images/Running_dmg/running_patches7.webp',
+    'assets/images/Running_dmg/running_patches8.webp',
+    'assets/images/Running_dmg/running_patches9.webp',
+    'assets/images/Running_dmg/running_patches10.webp',
+    'assets/images/Running_dmg/running_patches11.webp',
+    'assets/images/Running_dmg/running_patches12.webp',
+
+    //catch_split
+    'assets/images/Catch_dmg/catch_split.webp',
+    'assets/images/Catch_dmg/catch_split1.webp',
+    'assets/images/Catch_dmg/catch_split2.webp',
+    'assets/images/Catch_dmg/catch_split3.webp',
+    'assets/images/Catch_dmg/catch_split4.webp',
+    'assets/images/Catch_dmg/catch_split5.webp',
+    'assets/images/Catch_dmg/catch_split6.webp',
+    'assets/images/Catch_dmg/catch_split7.webp',
+    'assets/images/Catch_dmg/catch_split8.webp',
+    'assets/images/Catch_dmg/catch_split9.webp',
+    'assets/images/Catch_dmg/catch_split10.webp',
+    'assets/images/Catch_dmg/catch_split11.webp',
+    'assets/images/Catch_dmg/catch_split12.webp',
+    'assets/images/Catch_dmg/catch_split13.webp',
+    'assets/images/Catch_dmg/catch_split14.webp',
+    'assets/images/Catch_dmg/catch_split15.webp'
+    
 ];
 
 // Install Event: Pre-cache all files
