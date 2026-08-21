@@ -1,6 +1,6 @@
 /**
  * Tahi Kalahi - Main Application Logic
- * PWA with Offline Capability
+ * Progressive Web App for Hand-Stitching Tutorials
  */
 
 let appData = {};
@@ -33,15 +33,24 @@ function initHeroSlideshow() {
     setInterval(showNextSlide, 2000);
 }
 
-// Page Navigation
+// Page Navigation - WITH SCROLL TO TOP FIX
 function showView(viewId) {
+    // Scroll to top when switching views
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Also scroll any scrollable containers to top
+    const sliders = document.querySelectorAll('.horizontal-slider');
+    sliders.forEach(slider => {
+        slider.scrollLeft = 0;
+    });
+    
     const views = document.querySelectorAll('.view');
     views.forEach(view => view.classList.remove('active-view'));
     
     const targetView = document.getElementById(viewId + '-view');
     if (targetView) targetView.classList.add('active-view');
-    
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (viewId === 'home') {
         history.replaceState({ view: 'home' }, '', '#home');
@@ -50,14 +59,14 @@ function showView(viewId) {
     }
 }
 
+// Handle browser back button
 window.addEventListener('popstate', (event) => {
     showView('home');
 });
 
-// Load Data from JSON - IMPROVED FOR OFFLINE
+// Load Data from JSON
 async function fetchData() {
     try {
-        // Add cache-busting parameter only when online
         const cacheParam = navigator.onLine ? '?t=' + new Date().getTime() : '';
         const response = await fetch('data.json' + cacheParam);
         
@@ -72,7 +81,6 @@ async function fetchData() {
         setTimeout(() => initializeSliders(), 100);
     } catch (error) {
         console.error('[App] Error loading data:', error);
-        // Try to load from cache
         loadFromCache();
     }
 }
@@ -80,7 +88,7 @@ async function fetchData() {
 // Load data from cache if fetch fails
 async function loadFromCache() {
     try {
-        const cache = await caches.open('tahi-kalahi-cache-v5');
+        const cache = await caches.open('tahi-kalahi-cache-v6');
         const response = await cache.match('./data.json');
         
         if (response) {
@@ -235,6 +243,10 @@ function viewGuide(stitchId) {
         `;
     }).join('');
     document.getElementById('guide-modal').style.display = 'flex';
+    
+    // Scroll modal to top
+    const modalContent = document.querySelector('#guide-modal .modal-content');
+    if (modalContent) modalContent.scrollTop = 0;
 }
 
 // View Damage Guide
@@ -267,12 +279,26 @@ function viewDamageGuide(damageId) {
         `;
     }).join('');
     document.getElementById('guide-modal').style.display = 'flex';
+    
+    // Scroll modal to top
+    const modalContent = document.querySelector('#guide-modal .modal-content');
+    if (modalContent) modalContent.scrollTop = 0;
 }
 
 // Close Modals
-function closeModal() { document.getElementById('recommendation-modal').style.display = 'none'; }
-function closeGuideModal() { document.getElementById('guide-modal').style.display = 'none'; }
+function closeModal() { 
+    document.getElementById('recommendation-modal').style.display = 'none'; 
+}
 
+function closeGuideModal() { 
+    document.getElementById('guide-modal').style.display = 'none'; 
+}
+
+function closeInstallModal() { 
+    document.getElementById('install-modal').style.display = 'none'; 
+}
+
+// Close modal when clicking outside
 window.onclick = function(event) {
     if (event.target == document.getElementById('recommendation-modal')) closeModal();
     if (event.target == document.getElementById('guide-modal')) closeGuideModal();
@@ -346,35 +372,28 @@ function showInstallInstructions(browser) {
     document.getElementById('install-modal').style.display = 'flex';
 }
 
-function closeInstallModal() {
-    document.getElementById('install-modal').style.display = 'none';
-}
-
 // Register Service Worker
 function registerSW() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js')
-            .then((registration) => {
-                console.log('[PWA] Service Worker registered:', registration.scope);
-                
-                // Check for updates
-                registration.addEventListener('updatefound', () => {
-                    console.log('[PWA] Service Worker update found');
-                });
-            })
-            .catch((error) => {
-                console.error('[PWA] Service Worker registration failed:', error);
-            });
-            
-        // Handle service worker updates
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-            console.log('[PWA] Service Worker controller changed - reloading content');
-            window.location.reload();
+        navigator.serviceWorker.getRegistration().then((registration) => {
+            if (!registration) {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('[PWA] Service Worker registered:', registration.scope);
+                        
+                        registration.addEventListener('updatefound', () => {
+                            console.log('[PWA] Service Worker update found');
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('[PWA] Service Worker registration failed:', error);
+                    });
+            }
         });
     }
 }
 
-// Expose functions
+// Expose functions to window for inline onclick handlers
 window.showView = showView;
 window.scrollSlider = scrollSlider;
 window.viewGuide = viewGuide;
