@@ -64,9 +64,10 @@ window.addEventListener('popstate', (event) => {
     showView('home');
 });
 
-// Load Data from JSON
+// Load Data from JSON - IMPROVED OFFLINE HANDLING
 async function fetchData() {
     try {
+        // Try to fetch from network first (with cache-busting when online)
         const cacheParam = navigator.onLine ? '?t=' + new Date().getTime() : '';
         const response = await fetch('data.json' + cacheParam);
         
@@ -75,35 +76,43 @@ async function fetchData() {
         }
         
         appData = await response.json();
-        console.log('[App] Data loaded successfully:', appData);
+        console.log('[App] Data loaded successfully from network');
         renderGallery();
         renderDamage();
         setTimeout(() => initializeSliders(), 100);
     } catch (error) {
-        console.error('[App] Error loading data:', error);
+        console.error('[App] Network fetch failed, trying cache:', error);
+        // If network fails, try to load from cache
         loadFromCache();
     }
 }
 
-// Load data from cache if fetch fails
+// Load data from cache if network fails
 async function loadFromCache() {
     try {
-        const cache = await caches.open('tahi-kalahi-cache-v6');
-        const response = await cache.match('./data.json');
+        // Try multiple cache names to find the data
+        const cacheNames = ['tahi-kalahi-cache-v7', 'tahi-kalahi-cache-v6', 'tahi-kalahi-cache-v5'];
         
-        if (response) {
-            appData = await response.json();
-            console.log('[App] Data loaded from cache');
-            renderGallery();
-            renderDamage();
-            setTimeout(() => initializeSliders(), 100);
-        } else {
-            console.error('[App] No cached data found');
-            showError('Unable to load data. Please check your connection.');
+        for (const cacheName of cacheNames) {
+            const cache = await caches.open(cacheName);
+            const response = await cache.match('./data.json');
+            
+            if (response) {
+                appData = await response.json();
+                console.log('[App] Data loaded from cache:', cacheName);
+                renderGallery();
+                renderDamage();
+                setTimeout(() => initializeSliders(), 100);
+                return; // Success, exit function
+            }
         }
+        
+        // If no cache found
+        console.error('[App] No cached data found in any cache');
+        showError('Unable to load data. Please check your connection and try again.');
     } catch (error) {
         console.error('[App] Cache load failed:', error);
-        showError('Unable to load data. Please refresh the page.');
+        showError('Unable to load data. Please refresh the page when online.');
     }
 }
 

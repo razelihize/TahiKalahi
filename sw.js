@@ -1,7 +1,7 @@
-// Service Worker for Tahi Kalahi PWA - Pre-cache all images
-const CACHE_NAME = 'tahi-kalahi-cache-v6';
+// Service Worker for Tahi Kalahi PWA
+const CACHE_NAME = 'tahi-kalahi-cache-v7';
 
-// All files to pre-cache
+// All files to pre-cache for offline use
 const urlsToCache = [
     './',
     './index.html',
@@ -98,9 +98,7 @@ const urlsToCache = [
     'assets/images/LadderS/ladder14.webp',
     'assets/images/LadderS/ladder15.webp',
     
-    // Damage Images
-
-    //whip_torn_edges
+    // Damage Images - Whip Torn Edges
     'assets/images/Whip_dmg/whip_torn_edges.webp',
     'assets/images/Whip_dmg/whip_torn_edges1.webp',
     'assets/images/Whip_dmg/whip_torn_edges2.webp',
@@ -114,8 +112,8 @@ const urlsToCache = [
     'assets/images/Whip_dmg/whip_torn_edges10.webp',
     'assets/images/Whip_dmg/whip_torn_edges11.webp',
     'assets/images/Whip_dmg/whip_torn_edges12.webp',
-
-    //running_patches
+    
+    // Damage Images - Running Patches
     'assets/images/Running_dmg/running_patches.webp',
     'assets/images/Running_dmg/running_patches1.webp',
     'assets/images/Running_dmg/running_patches2.webp',
@@ -129,8 +127,8 @@ const urlsToCache = [
     'assets/images/Running_dmg/running_patches10.webp',
     'assets/images/Running_dmg/running_patches11.webp',
     'assets/images/Running_dmg/running_patches12.webp',
-
-    //catch_split
+    
+    // Damage Images - Catch Split
     'assets/images/Catch_dmg/catch_split.webp',
     'assets/images/Catch_dmg/catch_split1.webp',
     'assets/images/Catch_dmg/catch_split2.webp',
@@ -147,7 +145,6 @@ const urlsToCache = [
     'assets/images/Catch_dmg/catch_split13.webp',
     'assets/images/Catch_dmg/catch_split14.webp',
     'assets/images/Catch_dmg/catch_split15.webp'
-
 ];
 
 // Install Event: Pre-cache all files
@@ -192,7 +189,7 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch Event: Serve from cache, fallback to network
+// Fetch Event: Cache-first strategy
 self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') {
         return;
@@ -224,7 +221,6 @@ self.addEventListener('fetch', (event) => {
                     })
                     .catch(() => {
                         console.log('[SW] Network request failed, serving offline fallback');
-                        // If it's an image request, return a transparent pixel
                         if (event.request.destination === 'image') {
                             return caches.match('./assets/icons/192.png');
                         }
