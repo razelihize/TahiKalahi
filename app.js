@@ -129,7 +129,7 @@ function showError(message) {
     }
 }
 
-// Render Gallery
+// Render Gallery - UPDATED TO SHOW DIFFICULTY INSTEAD OF TYPE
 function renderGallery() {
     const container = document.getElementById('gallery-grid');
     if (!container || !appData.stitches) return;
@@ -140,7 +140,7 @@ function renderGallery() {
                 ${s.galleryImage ? `<img src="${s.galleryImage}" alt="${s.name} Illustration" loading="lazy">` : `${s.name} Illustration`}
             </div>
             <strong>${s.name}</strong>
-            <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">${s.type}</p>
+            <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">${s.difficulty}</p>
         </div>
     `).join('');
 }

@@ -3,7 +3,7 @@
     {
       "id": "running",
       "name": "Running Stitch",
-      "type": "Basic",
+      "type": "Easy",
       "difficulty": "Easy",
       "description": "The most basic stitch used for seams, gathering fabric, and attaching patches.",
       "galleryImage": "assets/images/RunningS/running_pattern.webp",
@@ -25,7 +25,7 @@
     {
       "id": "backstitch",
       "name": "Backstitch",
-      "type": "Basic",
+      "type": "Medium",
       "difficulty": "Medium",
       "description": "A strong, durable stitch ideal for repairing loose seams.",
       "galleryImage": "assets/images/BackS/back_pattern.webp",
@@ -51,7 +51,7 @@
     {
       "id": "whip",
       "name": "Whip Stitch",
-      "type": "Basic",
+      "type": "Easy",
       "difficulty": "Easy",
       "description": "Used to join two edges of fabric, finish raw edges, or repair torn edges.",
       "galleryImage": "assets/images/WhipS/whip_pattern.webp",
@@ -72,7 +72,7 @@
     {
       "id": "catch",
       "name": "Catch Stitch",
-      "type": "Basic",
+      "type": "Medium",
       "difficulty": "Medium",
       "description": "A cross-stitch used for hemming and holding split fabric edges flat without puckering.",
       "galleryImage": "assets/images/CatchS/catch_pattern.webp",
@@ -97,7 +97,7 @@
     {
       "id": "ladder",
       "name": "Ladder Stitch",
-      "type": "Basic",
+      "type": "Hard",
       "difficulty": "Hard",
       "description": "An invisible stitch perfect for closing tiny holes seamlessly.",
       "galleryImage": "assets/images/LadderS/ladder_pattern.webp",
