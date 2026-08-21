@@ -230,31 +230,129 @@ main { flex: 1; display: flex; flex-direction: column; width: 100%; }
     border-radius: 8px; font-size: 0.9rem; padding: 1rem; min-height: 150px; box-sizing: border-box;
 }
 
-/* Modals */
-.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); animation: fadeIn 0.3s; justify-content: center; align-items: center; overflow-y: auto; padding: 20px; box-sizing: border-box; }
-.modal-content { background-color: var(--white); margin: auto; padding: 2rem; border-radius: 8px; width: 90%; max-width: 500px; position: relative; text-align: center; animation: slideDown 0.3s; max-height: 90vh; overflow-y: auto; box-sizing: border-box; }
-.modal-content.large { max-width: 900px; }
-.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--btn-border); }
-.modal-header h2 { margin: 0; color: var(--text-color); font-size: 1.8rem; }
-.close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; color: var(--text-color); background: none; border: none; line-height: 1; }
+/* ===== MODALS - FIXED ALIGNMENT ===== */
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.5); 
+    animation: fadeIn 0.3s; 
+    justify-content: center; 
+    align-items: center; 
+    overflow-y: auto; 
+    padding: 20px; 
+    box-sizing: border-box; 
+}
+
+.modal-content { 
+    background-color: var(--white); 
+    margin: auto; 
+    padding: 0; /* Changed from 2rem to 0 - padding now handled by children */
+    border-radius: 8px; 
+    width: 90%; 
+    max-width: 500px; 
+    position: relative; 
+    text-align: center; 
+    animation: slideDown 0.3s; 
+    max-height: 90vh; 
+    overflow-y: auto; 
+    box-sizing: border-box; 
+}
+
+.modal-content.large { 
+    max-width: 900px; 
+}
+
+/* FIXED: Modal Header with Flexbox for perfect alignment */
+.modal-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1.5rem 2rem; 
+    border-bottom: 2px solid var(--btn-border); 
+    position: sticky;
+    top: 0;
+    background-color: var(--white);
+    z-index: 10;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-header h2 { 
+    margin: 0; 
+    color: var(--text-color); 
+    font-size: 1.8rem; 
+    text-align: left;
+}
+
+/* FIXED: Close button now uses static positioning to align with title */
+.close-btn { 
+    position: static; /* Changed from absolute to static */
+    font-size: 2rem; 
+    cursor: pointer; 
+    color: var(--text-color); 
+    background: none; 
+    border: none; 
+    line-height: 1;
+    padding: 0 0.5rem;
+    transition: transform 0.3s, color 0.3s;
+    flex-shrink: 0;
+}
+
+.close-btn:hover { 
+    color: var(--header-bg); 
+    transform: scale(1.2);
+}
+
 #modal-body .btn-primary { margin-bottom: 1rem; }
 
-.steps-container { display: flex; flex-direction: column; gap: 1.5rem; text-align: left; }
+/* Modal body content padding */
+#modal-body {
+    padding: 2rem;
+    text-align: center;
+}
 
-/* UPDATED Modal Step Images - Clean bordered style */
-.step-panel { display: flex; align-items: center; gap: 1.5rem; background-color: var(--card-bg); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--btn-border); }
-.step-panel:nth-child(even) { flex-direction: row-reverse; }
+#modal-body p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.steps-container { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5rem; 
+    text-align: left; 
+    padding: 2rem;
+}
+
+/* Modal Step Images - Clean bordered style */
+.step-panel { 
+    display: flex; 
+    align-items: center; 
+    gap: 1.5rem; 
+    background-color: var(--card-bg); 
+    padding: 1.5rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--btn-border); 
+}
+
+.step-panel:nth-child(even) { 
+    flex-direction: row-reverse; 
+}
 
 .step-image { 
     flex: 0 0 45%; 
     height: 250px; 
-    background-color: transparent; /* Removed grey background */
+    background-color: transparent;
     border-radius: 8px; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     color: #666; 
-    border: none; /* Removed dashed border */
+    border: none;
     overflow: hidden; 
     padding: 0;
 }
@@ -264,29 +362,87 @@ main { flex: 1; display: flex; flex-direction: column; width: 100%; }
     height: 100%; 
     object-fit: contain; 
     object-position: center; 
-    background-color: var(--white); /* White background inside the border */
+    background-color: var(--white);
     border-radius: 8px;
-    border: 2px solid #A8B5A0; /* Light green border exactly on the image */
+    border: 2px solid #A8B5A0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.step-instruction { flex: 1; display: flex; align-items: flex-start; gap: 1rem; }
-.step-number { background: var(--btn-border); color: var(--white); width: 35px; height: 35px; min-width: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; }
-.step-text h3 { margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem; }
-.step-text p { margin: 0; color: var(--text-color); line-height: 1.6; font-size: 1rem; }
-.modal-footer { margin-top: 2rem; text-align: center; }
+.step-instruction { 
+    flex: 1; 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 1rem; 
+}
 
-.install-instructions { text-align: left; margin: 1.5rem 0; }
-.install-instructions ol { padding-left: 1.5rem; margin: 1rem 0; }
-.install-instructions li { margin-bottom: 0.75rem; line-height: 1.5; color: var(--text-color); }
-.install-instructions strong { color: var(--text-color); font-weight: 600; }
+.step-number { 
+    background: var(--btn-border); 
+    color: var(--white); 
+    width: 35px; 
+    height: 35px; 
+    min-width: 35px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-weight: bold; 
+    font-size: 1.1rem; 
+}
 
-footer { text-align: center; padding: 2rem; background-color: var(--header-bg); color: var(--white); margin-top: auto; width: 100%; box-sizing: border-box; }
+.step-text h3 { 
+    margin: 0 0 0.5rem 0; 
+    color: var(--text-color); 
+    font-size: 1.2rem; 
+}
+
+.step-text p { 
+    margin: 0; 
+    color: var(--text-color); 
+    line-height: 1.6; 
+    font-size: 1rem; 
+}
+
+.modal-footer { 
+    padding: 1.5rem 2rem;
+    border-top: 2px solid var(--btn-border);
+    text-align: center; 
+}
+
+.install-instructions { 
+    text-align: left; 
+    padding: 2rem;
+}
+
+.install-instructions ol { 
+    padding-left: 1.5rem; 
+    margin: 1rem 0; 
+}
+
+.install-instructions li { 
+    margin-bottom: 0.75rem; 
+    line-height: 1.5; 
+    color: var(--text-color); 
+}
+
+.install-instructions strong { 
+    color: var(--text-color); 
+    font-weight: 600; 
+}
+
+footer { 
+    text-align: center; 
+    padding: 2rem; 
+    background-color: var(--header-bg); 
+    color: var(--white); 
+    margin-top: auto; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-/* Responsive - Tablets */
+/* ===== RESPONSIVE - Tablets ===== */
 @media (max-width: 1024px) {
     .hero { padding: 2.5rem 2rem; gap: 1.5rem 2rem; }
     .hero-text h1 { font-size: 1.6rem; }
@@ -295,7 +451,7 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
     .content-section { padding: 1.5rem; }
 }
 
-/* Responsive - Mobile Phones */
+/* ===== RESPONSIVE - Mobile Phones ===== */
 @media (max-width: 767px) {
     .navbar { padding: 1rem 1rem; height: auto; min-height: 70px; }
     .logo { font-size: 1.2rem; }
@@ -329,23 +485,80 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
     .slider-card { scroll-snap-align: center; }
     .scroll-arrow { display: none; }
     
-    .modal-content.large { width: 95%; padding: 1.5rem; max-height: 95vh; }
-    .modal-header h2 { font-size: 1.5rem; }
-    .close-btn { font-size: 2.5rem; top: 10px; right: 15px; }
-    .steps-container { gap: 2rem; }
-    .step-panel { flex-direction: column !important; padding: 1.5rem; gap: 1.5rem; }
-    .step-image { flex: 0 0 auto; width: 100%; height: 280px; max-height: 280px; }
-    .step-image img { width: 100%; height: 100%; object-fit: contain; }
-    .step-instruction { width: 100%; gap: 1rem; }
-    .step-number { width: 45px; height: 45px; min-width: 45px; font-size: 1.4rem; }
-    .step-text h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .step-text p { font-size: 1.1rem; line-height: 1.7; }
-    .modal-footer { margin-top: 2rem; }
+    /* FIXED: Modal responsive styles */
+    .modal-content { width: 95%; padding: 0; max-height: 95vh; }
+    .modal-content.large { width: 95%; padding: 0; max-height: 95vh; }
+    
+    .modal-header { 
+        padding: 1rem 1.5rem; 
+    }
+    
+    .modal-header h2 { 
+        font-size: 1.5rem; 
+    }
+    
+    .close-btn { 
+        font-size: 2rem; /* Fixed size, no longer absolute positioned */
+    }
+    
+    .steps-container { 
+        gap: 2rem; 
+        padding: 1.5rem;
+    }
+    
+    .step-panel { 
+        flex-direction: column !important; 
+        padding: 1.5rem; 
+        gap: 1.5rem; 
+    }
+    
+    .step-image { 
+        flex: 0 0 auto; 
+        width: 100%; 
+        height: 280px; 
+        max-height: 280px; 
+    }
+    
+    .step-image img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: contain; 
+    }
+    
+    .step-instruction { 
+        width: 100%; 
+        gap: 1rem; 
+    }
+    
+    .step-number { 
+        width: 45px; 
+        height: 45px; 
+        min-width: 45px; 
+        font-size: 1.4rem; 
+    }
+    
+    .step-text h3 { 
+        font-size: 1.3rem; 
+        margin-bottom: 0.5rem; 
+    }
+    
+    .step-text p { 
+        font-size: 1.1rem; 
+        line-height: 1.7; 
+    }
+    
+    .modal-footer { 
+        padding: 1rem 1.5rem;
+    }
+    
+    #modal-body {
+        padding: 1.5rem;
+    }
     
     footer { padding: 1.5rem 1rem; font-size: 0.75rem; }
 }
 
-/* Responsive - Small Phones */
+/* ===== RESPONSIVE - Small Phones ===== */
 @media (max-width: 480px) {
     .navbar { padding: 0.75rem 0.75rem; min-height: 65px; }
     .logo { font-size: 1.1rem; }
@@ -372,19 +585,74 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
         padding: 1rem calc(50% - 120px);
     }
     
+    /* FIXED: Modal responsive styles for small phones */
     .modal { padding: 10px; }
-    .modal-content.large { width: 98%; padding: 1.2rem; max-height: 95vh; }
-    .modal-header h2 { font-size: 1.3rem; }
-    .close-btn { font-size: 2.2rem; top: 8px; right: 12px; }
-    .steps-container { gap: 1.5rem; }
-    .step-panel { padding: 1.2rem; gap: 1.2rem; }
-    .step-image { width: 100%; height: 240px; max-height: 240px; }
-    .step-image img { width: 100%; height: 100%; object-fit: contain; }
-    .step-instruction { width: 100%; gap: 0.8rem; }
-    .step-number { width: 40px; height: 40px; min-width: 40px; font-size: 1.2rem; }
-    .step-text h3 { font-size: 1.15rem; margin-bottom: 0.4rem; }
-    .step-text p { font-size: 1rem; line-height: 1.6; }
-    .modal-footer { margin-top: 1.5rem; }
+    .modal-content { width: 98%; padding: 0; max-height: 95vh; }
+    .modal-content.large { width: 98%; padding: 0; max-height: 95vh; }
+    
+    .modal-header { 
+        padding: 1rem; 
+    }
+    
+    .modal-header h2 { 
+        font-size: 1.3rem; 
+    }
+    
+    .close-btn { 
+        font-size: 1.8rem; /* Fixed size, no longer absolute positioned */
+    }
+    
+    .steps-container { 
+        gap: 1.5rem; 
+        padding: 1rem;
+    }
+    
+    .step-panel { 
+        padding: 1.2rem; 
+        gap: 1.2rem; 
+    }
+    
+    .step-image { 
+        width: 100%; 
+        height: 240px; 
+        max-height: 240px; 
+    }
+    
+    .step-image img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: contain; 
+    }
+    
+    .step-instruction { 
+        width: 100%; 
+        gap: 0.8rem; 
+    }
+    
+    .step-number { 
+        width: 40px; 
+        height: 40px; 
+        min-width: 40px; 
+        font-size: 1.2rem; 
+    }
+    
+    .step-text h3 { 
+        font-size: 1.15rem; 
+        margin-bottom: 0.4rem; 
+    }
+    
+    .step-text p { 
+        font-size: 1rem; 
+        line-height: 1.6; 
+    }
+    
+    .modal-footer { 
+        padding: 1rem;
+    }
+    
+    #modal-body {
+        padding: 1rem;
+    }
     
     footer { padding: 1rem 0.75rem; font-size: 0.7rem; }
 }
