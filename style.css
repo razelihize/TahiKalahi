@@ -16,11 +16,6 @@ body { width: 100%; overflow-x: hidden; }
     --scroll-indicator: #999999;
 }
 
-html, body {
-    height: auto !important;
-    min-height: 100%;
-}
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -34,16 +29,17 @@ body {
     overflow-x: hidden; width: 100%;
 }
 
-main { 
-    flex: 1 0 auto; 
-    display: flex; 
-    flex-direction: column; 
-    width: 100%; 
-}
+main { flex: 1 0 auto; display: flex; flex-direction: column; width: 100%; }
 
 .view { display: none; flex: 1; width: 100%; animation: fadeIn 0.4s ease-in-out; }
 .view.active-view { display: flex; flex-direction: column; }
-#home-view.active-view { align-items: center; justify-content: center; min-height: calc(100vh - var(--navbar-height) - 100px); }
+
+/* Desktop Home View Centering */
+#home-view.active-view { 
+    align-items: center; 
+    justify-content: center; 
+    min-height: calc(100vh - var(--navbar-height) - 100px); 
+}
 
 /* Navigation */
 .navbar {
@@ -476,306 +472,125 @@ footer {
     .content-section { padding: 1.5rem; }
 }
 
-/* ===== RESPONSIVE - Mobile Phones ===== */
+/* ===== RESPONSIVE - Mobile Phones (MAXIMIZED SPACE FIX) ===== */
 @media (max-width: 767px) {
-    /* Reduce navbar height on mobile */
+    /* Compact Navbar */
     .navbar { 
-        padding: 0.75rem 1rem; 
-        min-height: 60px; 
+        padding: 0.5rem 1rem; 
+        min-height: 55px; 
         height: auto;
     }
     .logo { font-size: 1.2rem; }
-    .navbar-logo { height: 40px; }
-    .nav-links { gap: 1.25rem; }
-    .nav-links a { font-size: 1rem; padding: 0.5rem; }
-    :root { --navbar-height: auto; }
-    .install-btn { font-size: 1rem !important; }
-    .back-btn { font-size: 3rem !important; width: 60px !important; height: 60px !important; }
-
-    /* Fix view spacing on mobile */
-    .view {
-        min-height: auto;
-    }
+    .navbar-logo { height: 35px; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.95rem; }
+    :root { --navbar-height: 55px; }
+    .install-btn { font-size: 0.95rem !important; }
     
-    #home-view.active-view {
-        min-height: auto;
-        padding: 0;
-        justify-content: flex-start;
+    /* FIX: Remove forced centering and min-height on mobile to eliminate white gaps */
+    .view { min-height: auto !important; }
+    #home-view.active-view { 
+        min-height: auto !important; 
+        justify-content: flex-start !important; 
+        padding: 1rem 0; 
     }
 
-    /* Reduce hero section spacing on mobile */
+    /* Compact Hero Section */
     .hero { 
         display: flex; 
         flex-direction: column; 
-        padding: 1.5rem 1rem; 
-        gap: 1.5rem; 
+        padding: 1rem; 
+        gap: 1rem; 
         align-items: center; 
     }
-    .hero-text { 
-        width: 100%; 
-        text-align: center; 
-        align-items: center; 
-        order: 1; 
-    }
-    .hero-image { 
-        width: 100%; 
-        max-width: 100%; 
-        order: 2; 
-    }
-    .hero-slideshow { height: 220px; }
+    .hero-text { width: 100%; text-align: center; order: 1; margin-bottom: 0.5rem; }
+    .hero-image { width: 100%; max-width: 100%; order: 2; margin: 0.5rem 0; }
+    .hero-slideshow { height: 180px; } /* Reduced from 350px */
     
     .hero-buttons { 
         width: 100%; 
         flex-direction: column; 
         align-items: center; 
-        gap: 0.75rem; 
+        gap: 0.5rem; 
         order: 3; 
         margin-top: 0.5rem;
     }
-    .hero-text h1 { 
-        font-size: 1.4rem; 
-        line-height: 1.3; 
-        margin-bottom: 0.75rem; 
-    }
-    .hero-text p { 
-        font-size: 0.9rem; 
-        margin-bottom: 0; 
-    }
-    .btn-primary { 
-        padding: 0.7rem 1.2rem; 
-        font-size: 0.9rem; 
-        white-space: normal; 
-    }
+    .hero-text h1 { font-size: 1.3rem; line-height: 1.3; margin-bottom: 0.5rem; }
+    .hero-text p { font-size: 0.9rem; margin-bottom: 0; }
+    .btn-primary { padding: 0.6rem 1.2rem; font-size: 0.85rem; white-space: normal; }
     
-    /* Reduce content section padding */
-    .content-section { 
-        padding: 1.5rem 1rem; 
-    }
-    .content-section h2 { 
-        font-size: 1.2rem; 
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-    }
-    .content-section > p {
-        margin-bottom: 1.5rem;
-    }
+    /* Compact Content Sections */
+    .content-section { padding: 1rem; }
+    .content-section h2 { font-size: 1.2rem; margin-bottom: 0.75rem; padding-bottom: 0.3rem; }
+    .content-section > p { margin-bottom: 1rem; font-size: 0.9rem; }
     
-    /* Reduce slider container margin */
-    .horizontal-slider-container { 
-        margin-bottom: 1rem; 
-    }
-    
-    /* Reduce back button margin */
-    .back-nav { 
-        margin-bottom: 1rem; 
-    }
-    
-    .developers-wrapper { flex-direction: column; align-items: center; gap: 2rem; }
+    .back-nav { margin-bottom: 0.75rem; }
+    .back-btn { font-size: 2.5rem !important; width: 50px !important; height: 50px !important; }
+
+    .developers-wrapper { flex-direction: column; align-items: center; gap: 1.5rem; }
     .developer-profile { max-width: 100%; }
 
-    .horizontal-slider-container { padding: 0; position: static; }
+    .horizontal-slider-container { padding: 0; position: static; margin-bottom: 1rem; }
     .horizontal-slider-container::before, .horizontal-slider-container::after { display: none; }
-    .horizontal-slider {
-        gap: 1rem; padding: 1rem calc(50% - 140px);
-    }
+    .horizontal-slider { gap: 1rem; padding: 1rem calc(50% - 140px); }
     .slider-card { scroll-snap-align: center; }
     .scroll-arrow { display: none; }
     
     /* Modal responsive styles */
     .modal-content { width: 95%; padding: 0; max-height: 95vh; }
     .modal-content.large { width: 95%; padding: 0; max-height: 95vh; }
+    .modal-header { padding: 1rem 1.5rem; }
+    .modal-header h2 { font-size: 1.4rem; }
+    .close-btn { font-size: 1.8rem; }
     
-    .modal-header { 
-        padding: 1rem 1.5rem; 
-    }
+    .steps-container { gap: 1.5rem; padding: 1.5rem; }
+    .step-panel { flex-direction: column !important; padding: 1rem; gap: 1rem; }
+    .step-image { flex: 0 0 auto; width: 100%; height: 220px; max-height: 220px; }
+    .step-image img { width: 100%; height: 100%; object-fit: contain; }
+    .step-instruction { width: 100%; gap: 0.8rem; }
+    .step-number { width: 40px; height: 40px; min-width: 40px; font-size: 1.2rem; }
+    .step-text h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .step-text p { font-size: 0.95rem; line-height: 1.5; }
     
-    .modal-header h2 { 
-        font-size: 1.5rem; 
-    }
+    .modal-footer { padding: 1rem 1.5rem; }
+    #modal-body { padding: 1.5rem; }
     
-    .close-btn { 
-        font-size: 2rem;
-    }
-    
-    .steps-container { 
-        gap: 2rem; 
-        padding: 1.5rem;
-    }
-    
-    .step-panel { 
-        flex-direction: column !important; 
-        padding: 1.5rem; 
-        gap: 1.5rem; 
-    }
-    
-    .step-image { 
-        flex: 0 0 auto; 
-        width: 100%; 
-        height: 280px; 
-        max-height: 280px; 
-    }
-    
-    .step-image img { 
-        width: 100%; 
-        height: 100%; 
-        object-fit: contain; 
-    }
-    
-    .step-instruction { 
-        width: 100%; 
-        gap: 1rem; 
-    }
-    
-    .step-number { 
-        width: 45px; 
-        height: 45px; 
-        min-width: 45px; 
-        font-size: 1.4rem; 
-    }
-    
-    .step-text h3 { 
-        font-size: 1.3rem; 
-        margin-bottom: 0.5rem; 
-    }
-    
-    .step-text p { 
-        font-size: 1.1rem; 
-        line-height: 1.7; 
-    }
-    
-    .modal-footer { 
-        padding: 1rem 1.5rem;
-    }
-    
-    #modal-body {
-        padding: 1.5rem;
-    }
-    
-    /* Fix footer spacing */
-    footer { 
-        margin-top: auto; 
-        padding: 1rem; 
-    }
+    /* Compact Footer */
+    footer { padding: 1rem 0.5rem; font-size: 0.75rem; margin-top: auto; }
 }
 
 /* ===== RESPONSIVE - Small Phones ===== */
 @media (max-width: 480px) {
-    .navbar { 
-        padding: 0.5rem 0.75rem; 
-        min-height: 55px; 
-    }
+    .navbar { padding: 0.4rem 0.75rem; min-height: 50px; }
     .logo { font-size: 1.1rem; }
-    .navbar-logo { height: 35px; }
-    .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 0.9rem; padding: 0.4rem; }
-    .install-btn { font-size: 0.9rem !important; }
-    .back-btn { font-size: 2.8rem !important; width: 55px !important; height: 55px !important; }
+    .navbar-logo { height: 30px; }
+    .nav-links { gap: 0.75rem; }
+    .nav-links a { font-size: 0.85rem; }
+    .install-btn { font-size: 0.85rem !important; }
 
-    .hero { 
-        padding: 1rem 0.75rem; 
-        gap: 1rem; 
-    }
-    .hero-slideshow { height: 180px; }
+    .hero { padding: 0.75rem; gap: 0.75rem; }
+    .hero-slideshow { height: 150px; } /* Further reduced for small screens */
+    .hero-text h1 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .hero-text p { font-size: 0.8rem; }
+    .btn-primary { padding: 0.5rem 1rem; font-size: 0.8rem; }
     
-    .hero-text h1 { 
-        font-size: 1.2rem; 
-        margin-bottom: 0.5rem; 
-    }
-    .hero-text p { 
-        font-size: 0.85rem; 
-    }
-    .hero-buttons .btn-primary {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
-    }
+    .content-section { padding: 0.75rem; }
+    .content-section h2 { font-size: 1.1rem; }
     
-    .content-section { 
-        padding: 1rem 0.75rem; 
-    }
-    .content-section h2 { 
-        font-size: 1rem; 
-    }
-    .content-section p { 
-        font-size: 0.85rem; 
-    }
-    
-    .horizontal-slider {
-        padding: 1rem calc(50% - 120px);
-    }
-    
-    /* Modal responsive styles for small phones */
     .modal { padding: 10px; }
-    .modal-content { width: 98%; padding: 0; max-height: 95vh; }
-    .modal-content.large { width: 98%; padding: 0; max-height: 95vh; }
+    .modal-content { width: 98%; }
+    .modal-content.large { width: 98%; }
+    .modal-header { padding: 0.75rem 1rem; }
+    .modal-header h2 { font-size: 1.2rem; }
+    .close-btn { font-size: 1.6rem; }
     
-    .modal-header { 
-        padding: 1rem; 
-    }
+    .steps-container { padding: 1rem; gap: 1rem; }
+    .step-panel { padding: 0.75rem; }
+    .step-image { height: 180px; max-height: 180px; }
+    .step-text h3 { font-size: 1rem; }
+    .step-text p { font-size: 0.9rem; }
     
-    .modal-header h2 { 
-        font-size: 1.3rem; 
-    }
-    
-    .close-btn { 
-        font-size: 1.8rem;
-    }
-    
-    .steps-container { 
-        gap: 1.5rem; 
-        padding: 1rem;
-    }
-    
-    .step-panel { 
-        padding: 1.2rem; 
-        gap: 1.2rem; 
-    }
-    
-    .step-image { 
-        width: 100%; 
-        height: 240px; 
-        max-height: 240px; 
-    }
-    
-    .step-image img { 
-        width: 100%; 
-        height: 100%; 
-        object-fit: contain; 
-    }
-    
-    .step-instruction { 
-        width: 100%; 
-        gap: 0.8rem; 
-    }
-    
-    .step-number { 
-        width: 40px; 
-        height: 40px; 
-        min-width: 40px; 
-        font-size: 1.2rem; 
-    }
-    
-    .step-text h3 { 
-        font-size: 1.15rem; 
-        margin-bottom: 0.4rem; 
-    }
-    
-    .step-text p { 
-        font-size: 1rem; 
-        line-height: 1.6; 
-    }
-    
-    .modal-footer { 
-        padding: 1rem;
-    }
-    
-    #modal-body {
-        padding: 1rem;
-    }
-    
-    footer { 
-        padding: 0.75rem; 
-        font-size: 0.7rem; 
-    }
+    footer { padding: 0.75rem; font-size: 0.65rem; }
 }
 
 @media (prefers-reduced-data: reduce) { .placeholder-box { background-color: #eee; } }
