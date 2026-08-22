@@ -29,12 +29,11 @@ body {
     overflow-x: hidden; width: 100%;
 }
 
-main { flex: 1 0 auto; display: flex; flex-direction: column; width: 100%; }
+main { flex: 1; display: flex; flex-direction: column; width: 100%; }
 
 .view { display: none; flex: 1; width: 100%; animation: fadeIn 0.4s ease-in-out; }
 .view.active-view { display: flex; flex-direction: column; }
 
-/* Desktop: Center home view */
 #home-view.active-view { 
     align-items: center; 
     justify-content: center; 
@@ -54,19 +53,60 @@ main { flex: 1 0 auto; display: flex; flex-direction: column; width: 100%; }
     box-sizing: border-box; width: 100%;
 }
 
-.logo { font-size: 1.5rem; font-weight: bold; color: var(--white); white-space: nowrap; display: flex; align-items: center; justify-self: start; }
-.logo-link { text-decoration: none; display: flex; align-items: center; cursor: pointer; }
-.navbar-logo { height: 45px; width: auto; display: block; pointer-events: none; }
-.nav-links { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; justify-self: center; }
-.nav-links a { text-decoration: none; color: var(--white); font-weight: 500; transition: opacity 0.3s; white-space: nowrap; }
+.logo { 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: var(--white); 
+    white-space: nowrap; 
+    display: flex; 
+    align-items: center; 
+    justify-self: start; 
+}
+.logo-link { 
+    text-decoration: none; 
+    display: flex; 
+    align-items: center; 
+    cursor: pointer; 
+}
+.navbar-logo { 
+    height: 60px; 
+    width: auto; 
+    display: block; 
+    pointer-events: none; 
+}
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    gap: 1.5rem; 
+    margin: 0; 
+    padding: 0; 
+    justify-self: center; 
+}
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--white); 
+    font-weight: 500; 
+    font-size: 1.1rem;
+    transition: opacity 0.3s; 
+    white-space: nowrap; 
+}
 .nav-links a:hover { opacity: 0.8; }
 
 .install-btn {
-    background: none !important; border: none !important; color: var(--white) !important;
-    font-size: 1rem !important; font-weight: 500 !important; cursor: pointer;
-    padding: 0 !important; margin: 0 !important; font-family: inherit !important;
-    transition: opacity 0.3s !important; white-space: nowrap !important;
-    justify-self: end !important; box-shadow: none !important; border-radius: 0 !important;
+    background: none !important; 
+    border: none !important; 
+    color: var(--white) !important;
+    font-size: 1rem !important; 
+    font-weight: 500 !important; 
+    cursor: pointer;
+    padding: 0 !important; 
+    margin: 0 !important; 
+    font-family: inherit !important;
+    transition: opacity 0.3s !important; 
+    white-space: nowrap !important;
+    justify-self: end !important; 
+    box-shadow: none !important; 
+    border-radius: 0 !important;
 }
 .install-btn:hover { opacity: 0.8 !important; }
 
@@ -237,25 +277,45 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
     .content-section { padding: 1.5rem; }
 }
 
-/* ===== RESPONSIVE - Mobile Phones (FIXED SPACING) ===== */
+/* ===== RESPONSIVE - Mobile Phones (ENLARGED STEP IMAGES) ===== */
 @media (max-width: 767px) {
-    .navbar { padding: 0.5rem 1rem; min-height: 55px; height: auto; }
+    .navbar { 
+        padding: 0.75rem 1rem; 
+        min-height: 70px; 
+        height: auto; 
+    }
     .logo { font-size: 1.2rem; }
-    .navbar-logo { height: 35px; }
-    .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 0.95rem; }
-    :root { --navbar-height: 55px; }
-    .install-btn { font-size: 0.95rem !important; }
+    .navbar-logo { 
+        height: 50px; 
+        width: auto; 
+    }
+    .nav-links { gap: 1.25rem; }
+    .nav-links a { 
+        font-size: 1.1rem; 
+        padding: 0.6rem; 
+    }
+    :root { --navbar-height: auto; }
+    .install-btn { font-size: 1.1rem !important; }
     
-    /* FIX: Remove centering and min-height on mobile */
-    .view { min-height: auto !important; }
-    #home-view.active-view { 
-        min-height: auto !important; 
-        justify-content: flex-start !important; 
-        padding: 0;
+    /* Keep footer at bottom - restore flex stretching */
+    body {
+        min-height: 100vh !important;
+    }
+    main {
+        flex: 1 !important;
+        min-height: auto !important;
+    }
+    footer {
+        margin-top: auto !important;
     }
 
-    /* Compact Hero Section */
+    /* Center home view content */
+    #home-view.active-view {
+        min-height: calc(100vh - 130px) !important;
+        justify-content: center !important;
+    }
+
+    /* Compact Hero */
     .hero { 
         display: flex; 
         flex-direction: column; 
@@ -263,77 +323,214 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
         gap: 1rem; 
         align-items: center; 
     }
-    .hero-text { width: 100%; text-align: center; order: 1; margin-bottom: 0.5rem; }
+    .hero-text { width: 100%; text-align: center; order: 1; margin-bottom: 0; }
     .hero-image { width: 100%; max-width: 100%; order: 2; margin: 0.5rem 0; }
-    .hero-slideshow { height: 180px; }
-    .hero-buttons { width: 100%; flex-direction: column; align-items: center; gap: 0.5rem; order: 3; margin-top: 0.5rem; }
-    .hero-text h1 { font-size: 1.3rem; line-height: 1.3; margin-bottom: 0.5rem; }
-    .hero-text p { font-size: 0.9rem; margin-bottom: 0; }
-    .btn-primary { padding: 0.6rem 1.2rem; font-size: 0.85rem; white-space: normal; }
+    
+    /* Enlarged Slideshow */
+    .hero-slideshow { height: 260px; } 
+    
+    .hero-buttons { 
+        width: 100%; 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 0.75rem; 
+        order: 3; 
+        margin-top: 0.75rem;
+    }
+    
+    /* ENLARGED TEXT AND BUTTONS */
+    .hero-text h1 { font-size: 1.4rem; line-height: 1.3; margin-bottom: 0.5rem; }
+    .hero-text p { font-size: 1rem; margin-bottom: 0; }
+    .btn-primary { padding: 0.7rem 1.5rem; font-size: 1rem; white-space: normal; }
     
     /* Compact Content Sections */
     .content-section { padding: 1rem; }
-    .content-section h2 { font-size: 1.2rem; margin-bottom: 0.75rem; padding-bottom: 0.3rem; }
-    .content-section > p { margin-bottom: 1rem; font-size: 0.9rem; }
-    .back-nav { margin-bottom: 0.75rem; }
-    .back-btn { font-size: 2.5rem !important; width: 50px !important; height: 50px !important; }
+    
+    /* ENLARGED SECTION HEADINGS AND DESCRIPTIONS */
+    .content-section h2 { font-size: 1.5rem; margin-bottom: 0.75rem; padding-bottom: 0.25rem; }
+    .content-section > p { margin-bottom: 1rem; font-size: 1.05rem; }
+    
+    .back-nav { margin-bottom: 0.5rem; }
+    .back-btn { font-size: 2rem !important; width: 45px !important; height: 45px !important; }
 
-    .developers-wrapper { flex-direction: column; align-items: center; gap: 1.5rem; }
+    .developers-wrapper { flex-direction: column; align-items: center; gap: 1rem; }
     .developer-profile { max-width: 100%; }
-    .horizontal-slider-container { padding: 0; position: static; margin-bottom: 1rem; }
+    .horizontal-slider-container { padding: 0; position: static; margin-bottom: 0.75rem; }
     .horizontal-slider-container::before, .horizontal-slider-container::after { display: none; }
-    .horizontal-slider { gap: 1rem; padding: 1rem calc(50% - 140px); }
+    .horizontal-slider { gap: 1rem; padding: 1rem calc(50% - 160px); }
+    
+    /* ENLARGED SLIDER CARDS */
+    .slider-card { 
+        flex: 0 0 320px; 
+        min-height: 280px; 
+        padding: 1.75rem; 
+    }
+    .slider-card .placeholder-box { 
+        min-height: 200px; 
+        margin-bottom: 1.25rem; 
+    }
+    .slider-card .placeholder-box img { 
+        max-height: 200px; 
+    }
+    .slider-card strong {
+        font-size: 1.15rem;
+    }
+    .slider-card p {
+        font-size: 1rem;
+    }
+    
     .slider-card { scroll-snap-align: center; }
     .scroll-arrow { display: none; }
     
-    /* Modal responsive styles */
+    /* Modal responsive styles - ENLARGED */
     .modal-content { width: 95%; padding: 0; max-height: 95vh; }
     .modal-content.large { width: 95%; padding: 0; max-height: 95vh; }
-    .modal-header { padding: 1rem 1.5rem; }
+    .modal-header { padding: 1rem 1.25rem; }
+    
+    /* ENLARGED MODAL TITLE */
     .modal-header h2 { font-size: 1.4rem; }
     .close-btn { font-size: 1.8rem; }
-    .steps-container { gap: 1.5rem; padding: 1.5rem; }
-    .step-panel { flex-direction: column !important; padding: 1rem; gap: 1rem; }
-    .step-image { flex: 0 0 auto; width: 100%; height: 220px; max-height: 220px; }
-    .step-image img { width: 100%; height: 100%; object-fit: contain; }
-    .step-instruction { width: 100%; gap: 0.8rem; }
-    .step-number { width: 40px; height: 40px; min-width: 40px; font-size: 1.2rem; }
-    .step-text h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
-    .step-text p { font-size: 0.95rem; line-height: 1.5; }
-    .modal-footer { padding: 1rem 1.5rem; }
-    #modal-body { padding: 1.5rem; }
     
-    /* Compact Footer */
-    footer { padding: 1rem 0.5rem; font-size: 0.75rem; margin-top: auto; }
+    /* ENLARGED MODAL BODY TEXT */
+    #modal-body { padding: 1.25rem; }
+    #modal-body p { 
+        font-size: 1.05rem; 
+        margin-bottom: 1rem; 
+        line-height: 1.5; 
+    }
+    #modal-body strong {
+        font-size: 1.05rem;
+    }
+    
+    /* ENLARGED STEP IMAGES AND MAXIMIZED SPACING */
+    .steps-container { 
+        gap: 2rem; 
+        padding: 1.5rem; 
+    }
+    .step-panel { 
+        flex-direction: column !important; 
+        padding: 1.5rem; 
+        gap: 1.5rem; 
+        margin-bottom: 0.5rem;
+    }
+    .step-image { 
+        flex: 0 0 auto; 
+        width: 100%; 
+        height: 300px; 
+        max-height: 300px; 
+    }
+    .step-image img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: contain; 
+    }
+    .step-instruction { 
+        width: 100%; 
+        gap: 1rem; 
+        align-items: flex-start;
+    }
+    .step-number { 
+        width: 45px; 
+        height: 45px; 
+        min-width: 45px; 
+        font-size: 1.3rem; 
+    }
+    .step-text h3 { 
+        font-size: 1.2rem; 
+        margin-bottom: 0.5rem; 
+    }
+    .step-text p { 
+        font-size: 1.05rem; 
+        line-height: 1.6; 
+    }
+    .modal-footer { padding: 0.75rem 1rem; }
+    
+    footer { padding: 1rem 0.5rem; font-size: 0.7rem; }
 }
 
 /* ===== RESPONSIVE - Small Phones ===== */
 @media (max-width: 480px) {
-    .navbar { padding: 0.4rem 0.75rem; min-height: 50px; }
+    .navbar { padding: 0.5rem 0.75rem; min-height: 65px; }
     .logo { font-size: 1.1rem; }
-    .navbar-logo { height: 30px; }
-    .nav-links { gap: 0.75rem; }
-    .nav-links a { font-size: 0.85rem; }
-    .install-btn { font-size: 0.85rem !important; }
+    .navbar-logo { height: 45px; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 1rem; padding: 0.5rem; }
+    .install-btn { font-size: 1rem !important; }
     .hero { padding: 0.75rem; gap: 0.75rem; }
-    .hero-slideshow { height: 150px; }
-    .hero-text h1 { font-size: 1.1rem; margin-bottom: 0.4rem; }
-    .hero-text p { font-size: 0.8rem; }
-    .btn-primary { padding: 0.5rem 1rem; font-size: 0.8rem; }
+    
+    /* Enlarged Slideshow for Small Phones */
+    .hero-slideshow { height: 200px; } 
+    
+    /* ENLARGED TEXT AND BUTTONS FOR SMALL PHONES */
+    .hero-text h1 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+    .hero-text p { font-size: 0.9rem; }
+    .btn-primary { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+    
     .content-section { padding: 0.75rem; }
-    .content-section h2 { font-size: 1.1rem; }
+    
+    /* ENLARGED SECTION HEADINGS FOR SMALL PHONES */
+    .content-section h2 { font-size: 1.3rem; }
+    
+    /* ENLARGED SLIDER CARDS FOR SMALL PHONES */
+    .horizontal-slider { padding: 1rem calc(50% - 140px); }
+    .slider-card { 
+        flex: 0 0 280px; 
+        min-height: 260px; 
+        padding: 1.5rem; 
+    }
+    .slider-card .placeholder-box { 
+        min-height: 180px; 
+    }
+    .slider-card .placeholder-box img { 
+        max-height: 180px; 
+    }
+    .slider-card strong {
+        font-size: 1.1rem;
+    }
+    .slider-card p {
+        font-size: 0.95rem;
+    }
+    
+    /* ENLARGED STEP IMAGES FOR SMALL PHONES */
+    .steps-container { 
+        gap: 1.5rem; 
+        padding: 1rem; 
+    }
+    .step-panel { 
+        padding: 1.25rem; 
+        gap: 1.25rem; 
+    }
+    .step-image { 
+        height: 250px; 
+        max-height: 250px; 
+    }
+    .step-number { 
+        width: 40px; 
+        height: 40px; 
+        min-width: 40px; 
+        font-size: 1.2rem; 
+    }
+    .step-text h3 { 
+        font-size: 1.1rem; 
+    }
+    .step-text p { 
+        font-size: 1rem; 
+    }
+    
+    /* ENLARGED MODAL TEXT FOR SMALL PHONES */
     .modal { padding: 10px; }
     .modal-content { width: 98%; }
     .modal-content.large { width: 98%; }
     .modal-header { padding: 0.75rem 1rem; }
-    .modal-header h2 { font-size: 1.2rem; }
+    .modal-header h2 { font-size: 1.25rem; }
     .close-btn { font-size: 1.6rem; }
-    .steps-container { padding: 1rem; gap: 1rem; }
-    .step-panel { padding: 0.75rem; }
-    .step-image { height: 180px; max-height: 180px; }
-    .step-text h3 { font-size: 1rem; }
-    .step-text p { font-size: 0.9rem; }
-    footer { padding: 0.75rem; font-size: 0.65rem; }
+    
+    #modal-body { padding: 1rem; }
+    #modal-body p { font-size: 0.95rem; }
+    #modal-body strong { font-size: 0.95rem; }
+    
+    .modal-footer { padding: 0.75rem; }
+    footer { padding: 0.75rem 0.5rem; font-size: 0.65rem; }
 }
 
 @media (prefers-reduced-data: reduce) { .placeholder-box { background-color: #eee; } }
