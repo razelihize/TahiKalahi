@@ -34,6 +34,7 @@ main { flex: 1 0 auto; display: flex; flex-direction: column; width: 100%; }
 .view { display: none; flex: 1; width: 100%; animation: fadeIn 0.4s ease-in-out; }
 .view.active-view { display: flex; flex-direction: column; }
 
+/* Desktop: Center home view */
 #home-view.active-view { 
     align-items: center; 
     justify-content: center; 
@@ -212,7 +213,7 @@ main { flex: 1 0 auto; display: flex; flex-direction: column; width: 100%; }
 
 .modal-footer { padding: 1.5rem 2rem; border-top: 2px solid var(--btn-border); text-align: center; }
 
-/* SAFETY FIX: Force hide footer for recommendation modal so Close button stays inside */
+/* SAFETY FIX: Force hide footer for recommendation modal */
 #recommendation-modal .modal-footer {
     display: none !important;
 }
@@ -227,7 +228,7 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE - Tablets ===== */
 @media (max-width: 1024px) {
     .hero { padding: 2.5rem 2rem; gap: 1.5rem 2rem; }
     .hero-text h1 { font-size: 1.6rem; }
@@ -236,6 +237,7 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
     .content-section { padding: 1.5rem; }
 }
 
+/* ===== RESPONSIVE - Mobile Phones (FIXED SPACING) ===== */
 @media (max-width: 767px) {
     .navbar { padding: 0.5rem 1rem; min-height: 55px; height: auto; }
     .logo { font-size: 1.2rem; }
@@ -245,10 +247,22 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
     :root { --navbar-height: 55px; }
     .install-btn { font-size: 0.95rem !important; }
     
+    /* FIX: Remove centering and min-height on mobile */
     .view { min-height: auto !important; }
-    #home-view.active-view { min-height: auto !important; justify-content: flex-start !important; padding: 1rem 0; }
+    #home-view.active-view { 
+        min-height: auto !important; 
+        justify-content: flex-start !important; 
+        padding: 0;
+    }
 
-    .hero { display: flex; flex-direction: column; padding: 1rem; gap: 1rem; align-items: center; }
+    /* Compact Hero Section */
+    .hero { 
+        display: flex; 
+        flex-direction: column; 
+        padding: 1rem; 
+        gap: 1rem; 
+        align-items: center; 
+    }
     .hero-text { width: 100%; text-align: center; order: 1; margin-bottom: 0.5rem; }
     .hero-image { width: 100%; max-width: 100%; order: 2; margin: 0.5rem 0; }
     .hero-slideshow { height: 180px; }
@@ -257,6 +271,7 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
     .hero-text p { font-size: 0.9rem; margin-bottom: 0; }
     .btn-primary { padding: 0.6rem 1.2rem; font-size: 0.85rem; white-space: normal; }
     
+    /* Compact Content Sections */
     .content-section { padding: 1rem; }
     .content-section h2 { font-size: 1.2rem; margin-bottom: 0.75rem; padding-bottom: 0.3rem; }
     .content-section > p { margin-bottom: 1rem; font-size: 0.9rem; }
@@ -271,6 +286,7 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
     .slider-card { scroll-snap-align: center; }
     .scroll-arrow { display: none; }
     
+    /* Modal responsive styles */
     .modal-content { width: 95%; padding: 0; max-height: 95vh; }
     .modal-content.large { width: 95%; padding: 0; max-height: 95vh; }
     .modal-header { padding: 1rem 1.5rem; }
@@ -286,9 +302,12 @@ footer { text-align: center; padding: 2rem; background-color: var(--header-bg); 
     .step-text p { font-size: 0.95rem; line-height: 1.5; }
     .modal-footer { padding: 1rem 1.5rem; }
     #modal-body { padding: 1.5rem; }
+    
+    /* Compact Footer */
     footer { padding: 1rem 0.5rem; font-size: 0.75rem; margin-top: auto; }
 }
 
+/* ===== RESPONSIVE - Small Phones ===== */
 @media (max-width: 480px) {
     .navbar { padding: 0.4rem 0.75rem; min-height: 50px; }
     .logo { font-size: 1.1rem; }
