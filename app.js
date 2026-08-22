@@ -1,15 +1,12 @@
 /**
  * Tahi Kalahi - Main Application Logic
- * Progressive Web App for Hand-Stitching Tutorials
  */
 
 let appData = {};
 let deferredPrompt;
 
-// Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
     history.replaceState({ view: 'home' }, '', '#home');
-    
     fetchData();
     registerSW();
     setupInstallButton();
@@ -17,64 +14,39 @@ document.addEventListener('DOMContentLoaded', () => {
     showView('home');
 });
 
-// Hero Slideshow Logic
 function initHeroSlideshow() {
     const slides = document.querySelectorAll('.hero-slideshow .slide');
     if (slides.length === 0) return;
-    
     let currentSlide = 0;
-    
     function showNextSlide() {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
     }
-    
     setInterval(showNextSlide, 2000);
 }
 
-// Page Navigation - WITH SCROLL TO TOP FIX
 function showView(viewId) {
-    // Scroll to top when switching views
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-    
-    // Also scroll any scrollable containers to top
     const sliders = document.querySelectorAll('.horizontal-slider');
-    sliders.forEach(slider => {
-        slider.scrollLeft = 0;
-    });
-    
+    sliders.forEach(slider => { slider.scrollLeft = 0; });
     const views = document.querySelectorAll('.view');
     views.forEach(view => view.classList.remove('active-view'));
-    
     const targetView = document.getElementById(viewId + '-view');
     if (targetView) targetView.classList.add('active-view');
-
-    if (viewId === 'home') {
-        history.replaceState({ view: 'home' }, '', '#home');
-    } else {
-        history.pushState({ view: viewId }, '', '#' + viewId);
-    }
+    if (viewId === 'home') { history.replaceState({ view: 'home' }, '', '#home'); } 
+    else { history.pushState({ view: viewId }, '', '#' + viewId); }
 }
 
-// Handle browser back button
-window.addEventListener('popstate', (event) => {
-    showView('home');
-});
+window.addEventListener('popstate', (event) => { showView('home'); });
 
-// Load Data from JSON - IMPROVED OFFLINE HANDLING
 async function fetchData() {
     try {
-        // Try to fetch from network first (with cache-busting when online)
         const cacheParam = navigator.onLine ? '?t=' + new Date().getTime() : '';
         const response = await fetch('data.json' + cacheParam);
-        
-        if (!response.ok) {
-            throw new Error('Failed to load data');
-        }
-        
+        if (!response.ok) throw new Error('Failed to load data');
         appData = await response.json();
         console.log('[App] Data loaded successfully from network');
         renderGallery();
@@ -82,32 +54,25 @@ async function fetchData() {
         setTimeout(() => initializeSliders(), 100);
     } catch (error) {
         console.error('[App] Network fetch failed, trying cache:', error);
-        // If network fails, try to load from cache
         loadFromCache();
     }
 }
 
-// Load data from cache if network fails
 async function loadFromCache() {
     try {
-        // Try multiple cache names to find the data
         const cacheNames = ['tahi-kalahi-cache-v7', 'tahi-kalahi-cache-v6', 'tahi-kalahi-cache-v5'];
-        
         for (const cacheName of cacheNames) {
             const cache = await caches.open(cacheName);
             const response = await cache.match('./data.json');
-            
             if (response) {
                 appData = await response.json();
                 console.log('[App] Data loaded from cache:', cacheName);
                 renderGallery();
                 renderDamage();
                 setTimeout(() => initializeSliders(), 100);
-                return; // Success, exit function
+                return;
             }
         }
-        
-        // If no cache found
         console.error('[App] No cached data found in any cache');
         showError('Unable to load data. Please check your connection and try again.');
     } catch (error) {
@@ -116,24 +81,16 @@ async function loadFromCache() {
     }
 }
 
-// Show error message
 function showError(message) {
     const galleryGrid = document.getElementById('gallery-grid');
     const damageGrid = document.getElementById('damage-grid');
-    
-    if (galleryGrid) {
-        galleryGrid.innerHTML = '<p style="padding: 2rem; text-align: center; color: #666;">' + message + '</p>';
-    }
-    if (damageGrid) {
-        damageGrid.innerHTML = '<p style="padding: 2rem; text-align: center; color: #666;">' + message + '</p>';
-    }
+    if (galleryGrid) galleryGrid.innerHTML = '<p style="padding: 2rem; text-align: center; color: #666;">' + message + '</p>';
+    if (damageGrid) damageGrid.innerHTML = '<p style="padding: 2rem; text-align: center; color: #666;">' + message + '</p>';
 }
 
-// Render Gallery - UPDATED TO SHOW DIFFICULTY INSTEAD OF TYPE
 function renderGallery() {
     const container = document.getElementById('gallery-grid');
     if (!container || !appData.stitches) return;
-    
     container.innerHTML = appData.stitches.map(s => `
         <div class="slider-card" onclick="viewGuide('${s.id}')">
             <div class="placeholder-box">
@@ -145,11 +102,9 @@ function renderGallery() {
     `).join('');
 }
 
-// Render Damage Types
 function renderDamage() {
     const container = document.getElementById('damage-grid');
     if (!container || !appData.damages) return;
-    
     container.innerHTML = appData.damages.map(d => `
         <div class="slider-card" onclick="getRecommendation('${d.id}')">
             <div class="placeholder-box">
@@ -160,81 +115,59 @@ function renderDamage() {
     `).join('');
 }
 
-// Scroll Slider
 function scrollSlider(containerId, direction) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.scrollBy({ left: direction * 300, behavior: 'smooth' });
 }
 
-// Initialize Sliders
 function initializeSliders() {
     const sliders = document.querySelectorAll('.horizontal-slider');
     sliders.forEach(slider => {
         slider.addEventListener('wheel', (e) => {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                slider.scrollLeft += e.deltaY;
-            }
+            if (e.deltaY !== 0) { e.preventDefault(); slider.scrollLeft += e.deltaY; }
         }, { passive: false });
-        
         let isMouseDown = false, startX, scrollLeft, hasDragged = false;
-        
         slider.addEventListener('mousedown', (e) => {
-            isMouseDown = true; hasDragged = false;
-            slider.classList.add('dragging');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
+            isMouseDown = true; hasDragged = false; slider.classList.add('dragging');
+            startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
         });
-        
         slider.addEventListener('mouseleave', () => { isMouseDown = false; slider.classList.remove('dragging'); });
         slider.addEventListener('mouseup', () => { isMouseDown = false; slider.classList.remove('dragging'); });
-        
         slider.addEventListener('mousemove', (e) => {
-            if (!isMouseDown) return;
-            e.preventDefault();
+            if (!isMouseDown) return; e.preventDefault();
             const x = e.pageX - slider.offsetLeft;
             const walk = (x - startX) * 1.5;
             if (Math.abs(x - startX) > 5) hasDragged = true;
             slider.scrollLeft = scrollLeft - walk;
         });
-        
-        slider.addEventListener('click', (e) => { 
-            if (hasDragged) { e.preventDefault(); e.stopPropagation(); } 
-        }, true);
+        slider.addEventListener('click', (e) => { if (hasDragged) { e.preventDefault(); e.stopPropagation(); } }, true);
     });
 }
 
-// Get Recommendation
+// UPDATED: Close button is now inside the modal body, below the View button
 function getRecommendation(damageId) {
     const damage = appData.damages.find(d => d.id === damageId);
     const stitch = appData.stitches.find(s => s.id === damage.recommendedStitchId);
-    
-    if (!damage || !stitch) {
-        alert('Unable to load recommendation. Please refresh the page.');
-        return;
-    }
+    if (!damage || !stitch) { alert('Unable to load recommendation. Please refresh the page.'); return; }
     
     document.getElementById('modal-title').innerText = `Damage: ${damage.name}`;
     document.getElementById('modal-body').innerHTML = `
         <p><strong>Recommended Stitch:</strong> ${stitch.name}</p>
         <p><strong>Difficulty:</strong> ${stitch.difficulty}</p>
         <p><strong>Description:</strong> ${stitch.description}</p>
-        <button class="btn-primary" onclick="viewDamageGuide('${damageId}')">View Step-by-Step Guide</button>
+        <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 2rem;">
+            <button class="btn-primary" onclick="viewDamageGuide('${damageId}')">View Step-by-Step Guide</button>
+            <button class="btn-primary" onclick="closeModal()" style="background-color: transparent; border: 2px solid var(--btn-border);">Close</button>
+        </div>
     `;
     document.getElementById('recommendation-modal').style.display = 'flex';
 }
 
-// View Guide
 function viewGuide(stitchId) {
     closeModal();
     const stitch = appData.stitches.find(s => s.id === stitchId);
-    
-    if (!stitch) {
-        alert('Unable to load guide. Please refresh the page.');
-        return;
-    }
-    
+    if (!stitch) { alert('Unable to load guide. Please refresh the page.'); return; }
     document.getElementById('guide-title').innerText = stitch.name;
     document.getElementById('guide-steps').innerHTML = stitch.steps.map((step, index) => {
         const imageHTML = step.image ? `<img src="${step.image}" alt="Step ${index + 1}">` : `<span style="color: #666; font-size: 0.9rem;"> Step ${index + 1} Infographic</span>`;
@@ -252,25 +185,16 @@ function viewGuide(stitchId) {
         `;
     }).join('');
     document.getElementById('guide-modal').style.display = 'flex';
-    
-    // Scroll modal to top
     const modalContent = document.querySelector('#guide-modal .modal-content');
     if (modalContent) modalContent.scrollTop = 0;
 }
 
-// View Damage Guide
 function viewDamageGuide(damageId) {
     closeModal();
     const damage = appData.damages.find(d => d.id === damageId);
     const stitch = appData.stitches.find(s => s.id === damage.recommendedStitchId);
-    
-    if (!damage || !stitch) {
-        alert('Unable to load guide. Please refresh the page.');
-        return;
-    }
-    
+    if (!damage || !stitch) { alert('Unable to load guide. Please refresh the page.'); return; }
     const stepsToUse = damage.steps || stitch.steps;
-
     document.getElementById('guide-title').innerText = `${stitch.name} for ${damage.name}`;
     document.getElementById('guide-steps').innerHTML = stepsToUse.map((step, index) => {
         const imageHTML = step.image ? `<img src="${step.image}" alt="Step ${index + 1}">` : `<span style="color: #666; font-size: 0.9rem;"> Step ${index + 1} Infographic</span>`;
@@ -288,33 +212,20 @@ function viewDamageGuide(damageId) {
         `;
     }).join('');
     document.getElementById('guide-modal').style.display = 'flex';
-    
-    // Scroll modal to top
     const modalContent = document.querySelector('#guide-modal .modal-content');
     if (modalContent) modalContent.scrollTop = 0;
 }
 
-// Close Modals
-function closeModal() { 
-    document.getElementById('recommendation-modal').style.display = 'none'; 
-}
+function closeModal() { document.getElementById('recommendation-modal').style.display = 'none'; }
+function closeGuideModal() { document.getElementById('guide-modal').style.display = 'none'; }
+function closeInstallModal() { document.getElementById('install-modal').style.display = 'none'; }
 
-function closeGuideModal() { 
-    document.getElementById('guide-modal').style.display = 'none'; 
-}
-
-function closeInstallModal() { 
-    document.getElementById('install-modal').style.display = 'none'; 
-}
-
-// Close modal when clicking outside
 window.onclick = function(event) {
     if (event.target == document.getElementById('recommendation-modal')) closeModal();
     if (event.target == document.getElementById('guide-modal')) closeGuideModal();
     if (event.target == document.getElementById('install-modal')) closeInstallModal();
 }
 
-// Browser Detection
 function detectBrowser() {
     const userAgent = navigator.userAgent;
     if (/Edg/i.test(userAgent)) return 'edge';
@@ -340,40 +251,25 @@ function getInstallInstructions(browser) {
 function setupInstallButton() {
     const installBtn = document.getElementById('install-btn');
     const browser = detectBrowser();
-    
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-        installBtn.style.display = 'none';
-        return;
+        installBtn.style.display = 'none'; return;
     }
-    
     if (browser === 'chrome' || browser === 'edge' || browser === 'opera') {
         window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.style.display = 'inline-flex';
+            e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'inline-flex';
         });
-        
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
-                deferredPrompt = null;
-                installBtn.style.display = 'none';
-            } else {
-                showInstallInstructions(browser);
-            }
+                deferredPrompt = null; installBtn.style.display = 'none';
+            } else { showInstallInstructions(browser); }
         });
     } else {
         installBtn.style.display = 'inline-flex';
-        installBtn.addEventListener('click', () => {
-            showInstallInstructions(browser);
-        });
+        installBtn.addEventListener('click', () => { showInstallInstructions(browser); });
     }
-    
-    window.addEventListener('appinstalled', () => {
-        installBtn.style.display = 'none';
-        deferredPrompt = null;
-    });
+    window.addEventListener('appinstalled', () => { installBtn.style.display = 'none'; deferredPrompt = null; });
 }
 
 function showInstallInstructions(browser) {
@@ -381,7 +277,6 @@ function showInstallInstructions(browser) {
     document.getElementById('install-modal').style.display = 'flex';
 }
 
-// Register Service Worker
 function registerSW() {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistration().then((registration) => {
@@ -389,20 +284,14 @@ function registerSW() {
                 navigator.serviceWorker.register('./sw.js')
                     .then((registration) => {
                         console.log('[PWA] Service Worker registered:', registration.scope);
-                        
-                        registration.addEventListener('updatefound', () => {
-                            console.log('[PWA] Service Worker update found');
-                        });
+                        registration.addEventListener('updatefound', () => { console.log('[PWA] Service Worker update found'); });
                     })
-                    .catch((error) => {
-                        console.error('[PWA] Service Worker registration failed:', error);
-                    });
+                    .catch((error) => { console.error('[PWA] Service Worker registration failed:', error); });
             }
         });
     }
 }
 
-// Expose functions to window for inline onclick handlers
 window.showView = showView;
 window.scrollSlider = scrollSlider;
 window.viewGuide = viewGuide;
