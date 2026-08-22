@@ -125,7 +125,27 @@
       "id": "loose-seams",
       "name": "Loose Seams",
       "recommendedStitchId": "backstitch",
-      "galleryImage": "assets/images/BackS/"
+      "galleryImage": "assets/images/Back_dmg/back_loose_seams.webp",
+      "steps": [
+        { "title": "Step 1", "text": "Identify the loose or unraveling seam that needs reinforcement.", "image": "assets/images/Back_dmg/back_loose_seams1.webp" },
+        { "title": "Step 2", "text": "Thread your needle with matching thread color and knot the end.", "image": "assets/images/Back_dmg/back_loose_seams2.webp" },
+        { "title": "Step 3", "text": "Start stitching about 1 inch before the loose area to anchor your thread.", "image": "assets/images/Back_dmg/back_loose_seams3.webp" },
+        { "title": "Step 4", "text": "Use a backstitch along the existing seam line, stitching through both fabric layers.", "image": "assets/images/Back_dmg/back_loose_seams4.webp" },
+        { "title": "Step 5", "text": "Keep your stitches small and even, following the original seam line.", "image": "assets/images/Back_dmg/back_loose_seams5.webp" },
+        { "title": "Step 6", "text": "Continue stitching through the entire loose section with consistent tension.", "image": "assets/images/Back_dmg/back_loose_seams6.webp" },
+        { "title": "Step 7", "text": "Overlap the original stitching by about 1 inch past the damaged area.", "image": "assets/images/Back_dmg/back_loose_seams7.webp" },
+        { "title": "Step 8", "text": "Make several small backstitches in one place to secure the thread.", "image": "assets/images/Back_dmg/back_loose_seams8.webp" },
+        { "title": "Step 9", "text": "Trim any loose threads from the original damaged seam.", "image": "assets/images/Back_dmg/back_loose_seams9.webp" },
+        { "title": "Step 10", "text": "Press the repaired seam flat with an iron to set the stitches.", "image": "assets/images/Back_dmg/back_loose_seams10.webp" },
+        { "title": "Step 11", "text": "Check that the repair is secure by gently pulling on both sides of the seam.", "image": "assets/images/Back_dmg/back_loose_seams11.webp" },
+        { "title": "Step 12", "text": "For extra strength, you can add a second row of stitching parallel to the first.", "image": "assets/images/Back_dmg/back_loose_seams12.webp" },
+        { "title": "Step 13", "text": "Trim any excess thread and press the seam one final time.", "image": "assets/images/Back_dmg/back_loose_seams13.webp" },
+        { "title": "Step 14", "text": "Your loose seam is now reinforced and ready for wear!", "image": "assets/images/Back_dmg/back_loose_seams14.webp" },
+        { "title": "Step 15", "text": "For curved seams, use smaller stitches to follow the curve smoothly.", "image": "assets/images/Back_dmg/back_loose_seams15.webp" },
+        { "title": "Step 16", "text": "On stretchy fabrics, consider using a catch stitch instead for flexibility.", "image": "assets/images/Back_dmg/back_loose_seams16.webp" },
+        { "title": "Step 17", "text": "For heavy fabrics, double your thread for extra strength.", "image": "assets/images/Back_dmg/back_loose_seams17.webp" },
+        { "title": "Step 18", "text": "Always match your thread weight to the fabric for the best results.", "image": "assets/images/Back_dmg/back_loose_seams18.webp" }
+      ]
     },
     {
       "id": "torn-edges",
@@ -151,7 +171,7 @@
       "id": "tiny-holes",
       "name": "Tiny Holes",
       "recommendedStitchId": "ladder",
-      "galleryImage": "assets/images/LadderS/"
+      "galleryImage": "assets/images/LadderS/ladder_pattern.webp"
     },
     {
       "id": "split-fabric",
