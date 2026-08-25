@@ -60,7 +60,8 @@ async function fetchData() {
 
 async function loadFromCache() {
     try {
-        const cacheNames = ['tahi-kalahi-cache-v7', 'tahi-kalahi-cache-v6', 'tahi-kalahi-cache-v5'];
+        // UPDATED: Added 'tahi-kalahi-cache-v8' to match the new Service Worker version
+        const cacheNames = ['tahi-kalahi-cache-v8', 'tahi-kalahi-cache-v7', 'tahi-kalahi-cache-v6', 'tahi-kalahi-cache-v5'];
         for (const cacheName of cacheNames) {
             const cache = await caches.open(cacheName);
             const response = await cache.match('./data.json');
