@@ -60,7 +60,7 @@ async function fetchData() {
 
 async function loadFromCache() {
     try {
-        // UPDATED: Added 'tahi-kalahi-cache-v8' to match the new Service Worker version
+        // Updated to check v8 first, matching the new Service Worker
         const cacheNames = ['tahi-kalahi-cache-v8', 'tahi-kalahi-cache-v7', 'tahi-kalahi-cache-v6', 'tahi-kalahi-cache-v5'];
         for (const cacheName of cacheNames) {
             const cache = await caches.open(cacheName);
@@ -146,7 +146,6 @@ function initializeSliders() {
     });
 }
 
-// UPDATED: Close button is now inside the modal body, below the View button
 function getRecommendation(damageId) {
     const damage = appData.damages.find(d => d.id === damageId);
     const stitch = appData.stitches.find(s => s.id === damage.recommendedStitchId);
@@ -278,21 +277,27 @@ function showInstallInstructions(browser) {
     document.getElementById('install-modal').style.display = 'flex';
 }
 
+// UPDATED: Added { scope: '/' } to guarantee desktop shortcut offline control
 function registerSW() {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistration().then((registration) => {
             if (!registration) {
-                navigator.serviceWorker.register('./sw.js')
+                navigator.serviceWorker.register('./sw.js', { scope: '/' })
                     .then((registration) => {
-                        console.log('[PWA] Service Worker registered:', registration.scope);
-                        registration.addEventListener('updatefound', () => { console.log('[PWA] Service Worker update found'); });
+                        console.log('[PWA] Service Worker registered with scope:', registration.scope);
+                        registration.addEventListener('updatefound', () => { 
+                            console.log('[PWA] Service Worker update found'); 
+                        });
                     })
-                    .catch((error) => { console.error('[PWA] Service Worker registration failed:', error); });
+                    .catch((error) => { 
+                        console.error('[PWA] Service Worker registration failed:', error); 
+                    });
             }
         });
     }
 }
 
+// Expose functions to the global window object for HTML onclick handlers
 window.showView = showView;
 window.scrollSlider = scrollSlider;
 window.viewGuide = viewGuide;

@@ -1,7 +1,6 @@
 // Service Worker for Tahi Kalahi PWA
-const CACHE_NAME = 'tahi-kalahi-cache-v8'; // Incremented version to force update
+const CACHE_NAME = 'tahi-kalahi-cache-v8';
 
-// All files to pre-cache for offline use
 const urlsToCache = [
     './',
     './index.html',
@@ -11,23 +10,17 @@ const urlsToCache = [
     './manifest.json',
     './assets/icons/192.png',
     './assets/icons/512.png',
-    
-    // Stitch Pattern Images
     'assets/images/RunningS/running_pattern.webp',
     'assets/images/BackS/back_pattern.webp',
     'assets/images/WhipS/whip_pattern.webp',
     'assets/images/CatchS/catch_pattern.webp',
     'assets/images/LadderS/ladder_pattern.webp',
-    
-    // Running Stitch Steps
     'assets/images/RunningS/running1.webp', 'assets/images/RunningS/running2.webp',
     'assets/images/RunningS/running3.webp', 'assets/images/RunningS/running4.webp',
     'assets/images/RunningS/running5.webp', 'assets/images/RunningS/running6.webp',
     'assets/images/RunningS/running7.webp', 'assets/images/RunningS/running8.webp',
     'assets/images/RunningS/running9.webp', 'assets/images/RunningS/running10.webp',
     'assets/images/RunningS/running11.webp', 'assets/images/RunningS/running12.webp',
-    
-    // Backstitch Steps
     'assets/images/BackS/back1.webp', 'assets/images/BackS/back2.webp',
     'assets/images/BackS/back3.webp', 'assets/images/BackS/back4.webp',
     'assets/images/BackS/back5.webp', 'assets/images/BackS/back6.webp',
@@ -36,16 +29,12 @@ const urlsToCache = [
     'assets/images/BackS/back11.webp', 'assets/images/BackS/back12.webp',
     'assets/images/BackS/back13.webp', 'assets/images/BackS/back14.webp',
     'assets/images/BackS/back15.webp', 'assets/images/BackS/back16.webp',
-    
-    // Whip Stitch Steps
     'assets/images/WhipS/whip1.webp', 'assets/images/WhipS/whip2.webp',
     'assets/images/WhipS/whip3.webp', 'assets/images/WhipS/whip4.webp',
     'assets/images/WhipS/whip5.webp', 'assets/images/WhipS/whip6.webp',
     'assets/images/WhipS/whip7.webp', 'assets/images/WhipS/whip8.webp',
     'assets/images/WhipS/whip9.webp', 'assets/images/WhipS/whip10.webp',
     'assets/images/WhipS/whip11.webp',
-    
-    // Catch Stitch Steps
     'assets/images/CatchS/catch1.webp', 'assets/images/CatchS/catch2.webp',
     'assets/images/CatchS/catch3.webp', 'assets/images/CatchS/catch4.webp',
     'assets/images/CatchS/catch5.webp', 'assets/images/CatchS/catch6.webp',
@@ -54,8 +43,6 @@ const urlsToCache = [
     'assets/images/CatchS/catch11.webp', 'assets/images/CatchS/catch12.webp',
     'assets/images/CatchS/catch13.webp', 'assets/images/CatchS/catch14.webp',
     'assets/images/CatchS/catch15.webp',
-    
-    // Ladder Stitch Steps
     'assets/images/LadderS/ladder1.webp', 'assets/images/LadderS/ladder2.webp',
     'assets/images/LadderS/ladder3.webp', 'assets/images/LadderS/ladder4.webp',
     'assets/images/LadderS/ladder5.webp', 'assets/images/LadderS/ladder6.webp',
@@ -64,8 +51,6 @@ const urlsToCache = [
     'assets/images/LadderS/ladder11.webp', 'assets/images/LadderS/ladder12.webp',
     'assets/images/LadderS/ladder13.webp', 'assets/images/LadderS/ladder14.webp',
     'assets/images/LadderS/ladder15.webp',
-    
-    // Damage Images - Loose Seams (Back_dmg)
     'assets/images/Back_dmg/back_loose_seams.webp',
     'assets/images/Back_dmg/back_loose_seams1.webp', 'assets/images/Back_dmg/back_loose_seams2.webp',
     'assets/images/Back_dmg/back_loose_seams3.webp', 'assets/images/Back_dmg/back_loose_seams4.webp',
@@ -76,8 +61,6 @@ const urlsToCache = [
     'assets/images/Back_dmg/back_loose_seams13.webp', 'assets/images/Back_dmg/back_loose_seams14.webp',
     'assets/images/Back_dmg/back_loose_seams15.webp', 'assets/images/Back_dmg/back_loose_seams16.webp',
     'assets/images/Back_dmg/back_loose_seams17.webp', 'assets/images/Back_dmg/back_loose_seams18.webp',
-
-    // Damage Images - Tiny Holes (Ladder_dmg)
     'assets/images/Ladder_dmg/ladder_holes.webp',
     'assets/images/Ladder_dmg/ladder_holes1.webp', 'assets/images/Ladder_dmg/ladder_holes2.webp',
     'assets/images/Ladder_dmg/ladder_holes3.webp', 'assets/images/Ladder_dmg/ladder_holes4.webp',
@@ -88,8 +71,6 @@ const urlsToCache = [
     'assets/images/Ladder_dmg/ladder_holes13.webp', 'assets/images/Ladder_dmg/ladder_holes14.webp',
     'assets/images/Ladder_dmg/ladder_holes15.webp', 'assets/images/Ladder_dmg/ladder_holes16.webp',
     'assets/images/Ladder_dmg/ladder_holes17.webp',
-    
-    // Damage Images - Whip Torn Edges
     'assets/images/Whip_dmg/whip_torn_edges.webp',
     'assets/images/Whip_dmg/whip_torn_edges1.webp', 'assets/images/Whip_dmg/whip_torn_edges2.webp',
     'assets/images/Whip_dmg/whip_torn_edges3.webp', 'assets/images/Whip_dmg/whip_torn_edges4.webp',
@@ -97,8 +78,6 @@ const urlsToCache = [
     'assets/images/Whip_dmg/whip_torn_edges7.webp', 'assets/images/Whip_dmg/whip_torn_edges8.webp',
     'assets/images/Whip_dmg/whip_torn_edges9.webp', 'assets/images/Whip_dmg/whip_torn_edges10.webp',
     'assets/images/Whip_dmg/whip_torn_edges11.webp', 'assets/images/Whip_dmg/whip_torn_edges12.webp',
-    
-    // Damage Images - Running Patches
     'assets/images/Running_dmg/running_patches.webp',
     'assets/images/Running_dmg/running_patches1.webp', 'assets/images/Running_dmg/running_patches2.webp',
     'assets/images/Running_dmg/running_patches3.webp', 'assets/images/Running_dmg/running_patches4.webp',
@@ -106,8 +85,6 @@ const urlsToCache = [
     'assets/images/Running_dmg/running_patches7.webp', 'assets/images/Running_dmg/running_patches8.webp',
     'assets/images/Running_dmg/running_patches9.webp', 'assets/images/Running_dmg/running_patches10.webp',
     'assets/images/Running_dmg/running_patches11.webp', 'assets/images/Running_dmg/running_patches12.webp',
-    
-    // Damage Images - Catch Split
     'assets/images/Catch_dmg/catch_split.webp',
     'assets/images/Catch_dmg/catch_split1.webp', 'assets/images/Catch_dmg/catch_split2.webp',
     'assets/images/Catch_dmg/catch_split3.webp', 'assets/images/Catch_dmg/catch_split4.webp',
@@ -119,14 +96,12 @@ const urlsToCache = [
     'assets/images/Catch_dmg/catch_split15.webp'
 ];
 
-// Install Event: Pre-cache all files
 self.addEventListener('install', (event) => {
     console.log('[SW] Installing Service Worker...');
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
                 console.log('[SW] Opened cache:', CACHE_NAME);
-                console.log('[SW] Caching', urlsToCache.length, 'files...');
                 return cache.addAll(urlsToCache).catch(err => {
                     console.log('[SW] Some files failed to cache, but continuing...', err);
                 });
@@ -138,7 +113,6 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Activate Event: Clean up old caches
 self.addEventListener('activate', (event) => {
     console.log('[SW] Activating Service Worker...');
     const cacheWhitelist = [CACHE_NAME];
@@ -159,42 +133,45 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch Event: Cache-first strategy
+// UPDATED FETCH EVENT FOR DESKTOP OFFLINE RELIABILITY
 self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') {
         return;
     }
 
     event.respondWith(
-        caches.match(event.request)
-            .then((response) => {
-                if (response) {
-                    return response;
+        caches.match(event.request).then((response) => {
+            // 1. If exact match is found in cache, return it
+            if (response) {
+                return response;
+            }
+            
+            // 2. CRITICAL DESKTOP FIX: If it's a page navigation request, always fallback to index.html
+            if (event.request.mode === 'navigate' || (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'))) {
+                return caches.match('./index.html');
+            }
+
+            // 3. Otherwise, try to fetch from the network
+            return fetch(event.request).then((networkResponse) => {
+                if (!networkResponse || networkResponse.status !== 200) {
+                    return networkResponse;
                 }
                 
-                // Try to fetch from network
-                return fetch(event.request)
-                    .then((response) => {
-                        if (!response || response.status !== 200) {
-                            return response;
-                        }
-                        
-                        // Clone and cache the response
-                        const responseToCache = response.clone();
-                        caches.open(CACHE_NAME)
-                            .then((cache) => {
-                                cache.put(event.request, responseToCache);
-                            });
-                        
-                        return response;
-                    })
-                    .catch(() => {
-                        console.log('[SW] Network request failed, serving offline fallback');
-                        if (event.request.destination === 'image') {
-                            return caches.match('./assets/icons/192.png');
-                        }
-                        return caches.match('./index.html');
-                    });
-            })
+                // Clone and cache the new response
+                const responseToCache = networkResponse.clone();
+                caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, responseToCache);
+                });
+                
+                return networkResponse;
+            }).catch(() => {
+                // 4. Ultimate offline fallback
+                console.log('[SW] Network request failed, serving offline fallback');
+                if (event.request.destination === 'image') {
+                    return caches.match('./assets/icons/192.png');
+                }
+                return caches.match('./index.html');
+            });
+        })
     );
 });
