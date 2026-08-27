@@ -1,7 +1,3 @@
-/**
- * Tahi Kalahi - Main Application Logic
- */
-
 let appData = {};
 let deferredPrompt;
 
@@ -13,6 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroSlideshow(); 
     showView('home');
 });
+
+function getDifficultyBadge(difficulty) {
+    if (!difficulty) return '';
+
+    const level = String(difficulty).toLowerCase().trim();
+    
+    const badgeStyles = {
+        easy: { bg: '#e8f5e9', color: '#1b5e20', border: '#a5d6a7' }, 
+        medium: { bg: '#fff8e1', color: '#b45309', border: '#ffe082' },   
+        hard: { bg: '#ffebee', color: '#b71c1c', border: '#ef9a9a' }     
+    };
+
+    const style = badgeStyles[level] || { bg: '#f5f5f5', color: '#666666', border: '#e0e0e0' };
+
+    return `<span style=" display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; background-color: ${style.bg}; color: ${style.color}; border: 1px solid ${style.border}; text-transform: capitalize;">${difficulty}</span>`;
+}
 
 function initHeroSlideshow() {
     const slides = document.querySelectorAll('.hero-slideshow .slide');
@@ -60,7 +72,6 @@ async function fetchData() {
 
 async function loadFromCache() {
     try {
-        // Updated to check v8 first, matching the new Service Worker
         const cacheNames = ['tahi-kalahi-cache-v8', 'tahi-kalahi-cache-v7', 'tahi-kalahi-cache-v6', 'tahi-kalahi-cache-v5'];
         for (const cacheName of cacheNames) {
             const cache = await caches.open(cacheName);
@@ -98,7 +109,7 @@ function renderGallery() {
                 ${s.galleryImage ? `<img src="${s.galleryImage}" alt="${s.name} Illustration" loading="lazy">` : `${s.name} Illustration`}
             </div>
             <strong>${s.name}</strong>
-            <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">${s.difficulty}</p>
+            <div style="margin-top: 6px;">${getDifficultyBadge(s.difficulty)}</div>
         </div>
     `).join('');
 }
@@ -153,12 +164,17 @@ function getRecommendation(damageId) {
     
     document.getElementById('modal-title').innerText = `Damage: ${damage.name}`;
     document.getElementById('modal-body').innerHTML = `
+        <img 
+          src="${stitch.galleryImage}" 
+          alt="${stitch.name}" 
+          class="bordered-img" 
+          style="width: 80%; height: 80%; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--border-color, #A8B5A0); border-radius: 10px; box-sizing: border-box;"
+        >
         <p><strong>Recommended Stitch:</strong> ${stitch.name}</p>
-        <p><strong>Difficulty:</strong> ${stitch.difficulty}</p>
+        <p><strong>Difficulty:</strong> ${getDifficultyBadge(stitch.difficulty)}</p>
         <p><strong>Description:</strong> ${stitch.description}</p>
         <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 2rem;">
             <button class="btn-primary" onclick="viewDamageGuide('${damageId}')">View Step-by-Step Guide</button>
-            <button class="btn-primary" onclick="closeModal()" style="background-color: transparent; border: 2px solid var(--btn-border);">Close</button>
         </div>
     `;
     document.getElementById('recommendation-modal').style.display = 'flex';
@@ -277,7 +293,6 @@ function showInstallInstructions(browser) {
     document.getElementById('install-modal').style.display = 'flex';
 }
 
-// UPDATED: Added { scope: '/' } to guarantee desktop shortcut offline control
 function registerSW() {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistration().then((registration) => {

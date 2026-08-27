@@ -85,9 +85,6 @@
         <!-- GALLERY VIEW -->
         <div id="gallery-view" class="view">
             <section id="gallery" class="content-section">
-                <div class="back-nav">
-                    <button class="btn-primary back-btn" onclick="showView('home')" aria-label="Back to Home">←</button>
-                </div>
                 <h2>Stitch Gallery</h2>
                 <p>Browse 5 basic hand-stitching techniques with step-by-step infographics.</p>
                 <div class="horizontal-slider-container">
@@ -101,9 +98,6 @@
         <!-- DAMAGE VIEW -->
         <div id="damage-view" class="view">
             <section id="damage" class="content-section">
-                <div class="back-nav">
-                    <button class="btn-primary back-btn" onclick="showView('home')" aria-label="Back to Home">←</button>
-                </div>
                 <h2>Damage Types</h2>
                 <p>Select your garment damage to get stitch recommendations.</p>
                 <div class="horizontal-slider-container">
@@ -117,22 +111,17 @@
         <!-- ABOUT VIEW -->
         <div id="about-view" class="view">
             <section id="about" class="content-section">
-                <div class="back-nav">
-                    <button class="btn-primary back-btn" onclick="showView('home')" aria-label="Back to Home">←</button>
-                </div>
                 <h2>About Tahi Kalahi</h2>
                 <p class="about-description">A Progressive Web Application designed to teach sustainable repair skills through 2D infographics. Supports SDG 11 (Sustainable Cities) and SDG 12 (Responsible Consumption).</p>
                 
                 <div class="developers-wrapper">
-                    <!-- Developer 1: Emerson -->
                     <div class="developer-profile">
-                          <img src="assets/images/Developers/oliva.jpg" alt="Emerson B. Oliva III" class="dev-avatar">
+                          <img src="assets/images/Developers/oliva.png" alt="Emerson B. Oliva III" class="dev-avatar">
                         <h3 class="dev-name">Emerson B. Oliva III</h3>
                         <p class="dev-role">Developer</p>
                         <p class="dev-school">Divine Word College of Legazpi</p>
                     </div>
-                    
-                    <!-- Developer 2: Murillo (Image Added) -->
+
                     <div class="developer-profile">
                         <img src="assets/images/Developers/murillo.png" alt="Sahn Ken Razel M. Murillo" class="dev-avatar">
                         <h3 class="dev-name">Sahn Ken Razel M. Murillo</h3>
@@ -143,7 +132,7 @@
             </section>
         </div>
 
-        <!-- Recommendation Modal (FOOTER REMOVED) -->
+        <!-- Recommendation Modal -->
         <div id="recommendation-modal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -151,7 +140,7 @@
                     <span class="close-btn" onclick="closeModal()">&times;</span>
                 </div>
                 <div id="modal-body"></div>
-                <!-- NO FOOTER HERE -->
+                
             </div>
         </div>
 
@@ -163,9 +152,6 @@
                     <span class="close-btn" onclick="closeGuideModal()">&times;</span>
                 </div>
                 <div id="guide-steps" class="steps-container"></div>
-                <div class="modal-footer">
-                    <button class="btn-primary" onclick="closeGuideModal()">Close</button>
-                </div>
             </div>
         </div>
 
